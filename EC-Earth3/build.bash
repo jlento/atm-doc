@@ -42,47 +42,14 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 
 
+### Environment setup ###
+
+module use --append /appl/climate/modulefiles
+module load cray-hdf5-parallel cray-netcdf-hdf5parallel grib_api/1.23.1 hdf/4.2.12 libemos/4.0.7
+
+
+
 ### Helper functions ###
-
-remove-path () {
-    local a
-    IFS=':' eval 'a=(${!2})'
-    a=( $(for e in "${a[@]}"; do [ "$e" == "$1" ] || echo "$e"; done) )
-    IFS=':' eval "$2=\"\${a[*]}\""
-}
-
-append-path () {
-    remove-path $1 $2
-    eval "$2=${!2}:$1"
-}
-
-module-set () {
-    conflicts=$(awk '/^conflict/{print $2}' <(module show $* 2>&1))
-    module unload $conflicts
-    module load $*
-}
-
-# next-file () {
-#     fname=$1
-#     if [ -f "$fname" ]; then
-# 	[[ "$fname" =~ ^(.+)\.([0-9]+)$ ]]
-# 	if [ -n "${BASH_REMATCH[2]}" ]; then
-# 	    echo "${BASH_REMATCH[1]}.$(( BASH_REMATCH[2] + 1 ))"
-# 	else
-# 	    echo "$fname.0"
-# 	fi
-#     else
-# 	echo "$fname"
-#     fi
-# }
-
-# backup-copy () {
-#     local fname=$1
-#     local nextfile=$(next-file $fname)
-#     if [ -f $fname ]; then
-# 	backup-copy $nextfile && rm -f $nextfile && cp -p $fname $nextfile
-#     fi
-# }
 
 expand-variables () {
     local infile="$1"
@@ -134,26 +101,11 @@ xios () {
     sed -i -e 's/^%PROD_CFLAGS.*/%PROD_CFLAGS    -O2 -DBOOST_DISABLE_ASSERTS/' \
 	   -e 's/^%PROD_FFLAGS.*/%PROD_FFLAGS    -O2 -J..\/inc/' arch/arch-ecconf.fcm
     ./make_xios --arch ecconf --job 8
-#    cd obj
-#    for s in idomain_attr idomaingroup_attr ifile_attr ifield_attr ifieldgroup_attr igrid_attr igridgroup_attr idata icalendar_wrapper_attr icalendar_wrapper_attr ; do
-#	ftn -o $s.o -J../inc -I/tmp/jlento/ece3/trunk/sources/xios-2/inc -em -m 4 -e0 -eZ -O2 -c /tmp/jlento/ece3/trunk/sources/xios-2/ppsrc/interface/fortran_attr/$s.f90
-#    done
-#    cd -
-#     ./make_xios --arch ecconf --job 8
 }
 
 nemo () {
     cd ${BLDROOT}/${BRANCH}/sources/nemo-3.6/CONFIG
     ./makenemo -n ORCA1L75_LIM3 -m ecconf
-
-    # Build of statically linked nemo appears to be broken...
-    #./makenemo -n ORCA1L75_LIM3 -m ecconf -j 4
-    #cd $EC3SOURCES/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/obj
-    #ar curv lib__fcm__nemo.a *.o
-    #ar d lib__fcm__nemo.a nemo.o
-    #mv lib__fcm__nemo.a ../lib
-    #cd $EC3SOURCES/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin
-    #ftn -o nemo.exe ../obj/nemo.o -L../lib -l__fcm__nemo -O2 -fp-model strict -r8 -L${EC3SOURCES}/xios-2/lib -lxios -lstdc++ -L${EC3SOURCES}/oasis3-mct/ecconf/lib -lpsmile.MPI1 -lmct -lmpeu -lscrip -lnetcdff -lnetcdf
 }
 
 oifs () {
@@ -271,8 +223,6 @@ apply_ECE_mods() {
     patch -u -p0 < $SCRIPTDIR/$1
 }
 
-module use --append /appl/climate/modulefiles
-module load cray-hdf5-parallel cray-netcdf-hdf5parallel grib_api/1.23.1 hdf/4.2.12 libemos/4.0.7
 
 
 ### Execute the functions if this script is not sourced ###
