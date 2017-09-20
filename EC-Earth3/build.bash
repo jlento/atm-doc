@@ -3,22 +3,23 @@
 # EC-EARTH3
 # =========
 #
-# Cray XC40 sisu.csc.fi, Cray compiler suite
+# Cray XC40, Cray compiler suite, sisu.csc.fi
 # jukka-pekka.keskinen@helsinki.fi, juha.lento@csc.fi
 # 2017-09-03
 
 # Usage
 # -----
 #
-# To simply execute everything automatically:
+# Build everything automatically (Yeah, you wish):
 #     bash install.bash
 #
-# Just to set up current environment and define functions for running funtions one by one (development/debugging)
+# Set up current environment and define functions for building components, and
+# then run the component build functions interactively (Porting/debugging):
 #     source install.bash
 
 # Requires
 # --------
-# File 'config-build.xml' (with sisu-cray-craympi platform)
+# File 'config-build-sisu-cray-craympi.xml' (with sisu-cray-craympi platform)
 
 
 
