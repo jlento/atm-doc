@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=jukka-pekka.keskinen}
+: ${SVNUSER:=}
 : ${BRANCH:=branches/development/2014/r1902-merge-new-components}
 : ${REVNO:=4483} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
@@ -180,22 +180,22 @@ create_ece_run () {
 
 ### Execute the functions if this script is not sourced ###
 
-#if [ ! "$sourced" ]; then
-#    updatesources
-#    { module list -t 2>&1 } > $BDIR/$EC3/modules.log
-#    { ecconfig       2>&1 } > $BDIR/$EC3/ecconf.log
-#    { oasis    2>&1 } > $BDIR/$EC3/oasis.log    &
-#    wait
-#    { compile_lucia    2>&1 } > $BDIR/$EC3/lucia.log    &
-#    { xios     2>&1 } > $BDIR/$EC3/xios.log &
-#    { tm5      2>&1 } > $BDIR/$EC3/tm5.log  &
-#    wait
-#    { oifs     2>&1 } > $BDIR/$EC3/ifs.log &
-#    { nemo     2>&1 } > $BDIR/$EC3/nemo.log &
-#    { runoff   2>&1 } > $BDIR/$EC3/runoff.log &
-#    wait
-#    { amipf    2>&1 } > $BDIR/$EC3/amipf.log &
-#    wait
-#    install_all
-#    create_ece_run
-#fi
+if [ !$sourced ]; then
+    updatesources
+    ( module list -t 2>&1 ) > ${BLDROOT}/${BRANCH}/modules.log
+    ( ecconfig       2>&1 ) > ${BLDROOT}/${BRANCH}/ecconf.log
+    ( oasis          2>&1 ) > ${BLDROOT}/${BRANCH}/oasis.log    &
+    wait
+    ( lucia          2>&1 ) > ${BLDROOT}/${BRANCH}/lucia.log    &
+    ( xios           2>&1 ) > ${BLDROOT}/${BRANCH}/xios.log &
+    ( tm5            2>&1 ) > ${BLDROOT}/${BRANCH}/tm5.log  &
+    wait
+    ( oifs           2>&1 ) > ${BLDROOT}/${BRANCH}/ifs.log &
+    ( nemo           2>&1 ) > ${BLDROOT}/${BRANCH}/nemo.log &
+    ( runoff-mapper  2>&1 ) > ${BLDROOT}/${BRANCH}/runoff.log &
+    wait
+    ( amip-forcing   2>&1 ) > ${BLDROOT}/${BRANCH}/amipf.log &
+    wait
+    install_all
+    create_ece_run
+fi
