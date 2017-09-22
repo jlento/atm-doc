@@ -162,15 +162,15 @@ install_all () {
 # Create run directory and fix stuff
 
 create_ece_run () {
-    cd $WRKDIR
-    mkdir -p $ECERUNTIME
-    cp -fr $BDIR/$EC3/runtime/* $ECERUNTIME/
-    cp -f $SCRIPTDIR/sisu.cfg.tmpl $ECERUNTIME/classic/platform/
-    cd $ECERUNTIME
+    cd $RUNROOT
+    mkdir -p ece-${BRANCH}-r${REVNO}
+    cp -fr ${BLDROOT}/${BRANCH}/runtime/* ${RUNROOT}/ece-${BRANCH}-r${REVNO}/
+    cp -f ${thisdir}/sisu.cfg.tmpl ${RUNROOT}/ece-${BRANCH}-r${REVNO}/classic/platform/
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}
     cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
-    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" $SCRIPTDIR/rundir.patch | patch -u -p0
-    mkdir -p $ECERUNTIME/tm5mp
-    cd $ECERUNTIME/tm5mp
+    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" ${thisdir}/rundir.patch | patch -u -p0
+    mkdir -p ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
     cp -rf ${BLDROOT}/${BRANCH}/sources/tm5mp/rc .
     cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/bin .
     cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/build .
