@@ -1,0 +1,32 @@
+package:
+  name: odb-api
+  version: "0.17.1"
+
+source:
+  url: https://software.ecmwf.int/wiki/download/attachments/61117379/odb_api_bundle-0.17.1-Source.tar.gz
+  md5: 37b4480873c10765a8896c4de9390afe
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - netcdf4
+    - netcdf-cxx-legacy
+    - eccodes
+    - boost
+    - lapack
+    - eigen
+  run:
+    - python
+    - netcdf4
+    - netcdf-cxx-legacy
+    - eccodes
+    - boost
+    - lapack
+    - eigen
+
+about:
+  home: https://software.ecmwf.int/wiki/display/ODBAPI/ODB+API+Home
+  license: Apache License 2.0

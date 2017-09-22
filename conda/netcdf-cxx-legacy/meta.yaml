@@ -1,0 +1,18 @@
+package:
+  name: netcdf-cxx-legacy
+  version: "4.2"
+
+source:
+  url: ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - netcdf4
+  run:
+    - netcdf4
+about:
+  home: https://www.unidata.ucar.edu/software/netcdf
+  license: The NetCDF Copyright
