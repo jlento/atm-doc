@@ -144,20 +144,19 @@ amip-forcing () {
 
 # Install
 install_all () {
-    cd $EC3SOURCES
-    mkdir -p ${INSTALL_BIN}
+    mkdir -p ${INSTALLROOT}/${BRANCH}/${REVNO}
     cp -f  \
-	$EC3SOURCES/xios-2/bin/xios_server.exe \
-	$EC3SOURCES/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
-	$EC3SOURCES/ifs-36r4/bin/ifsmaster-ecconf \
-	$EC3SOURCES/runoff-mapper/bin/runoff-mapper.exe \
-	$EC3SOURCES/amip-forcing/bin/amip-forcing.exe \
-	$EC3SOURCES/tm5mp/build/appl-tm5.x \
+	${BLDROOT}/${BRANCH}/sources/xios-2/bin/xios_server.exe \
+	${BLDROOT}/${BRANCH}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
+	${BLDROOT}/${BRANCH}/sources/ifs-36r4/bin/ifsmaster-ecconf \
+	${BLDROOT}/${BRANCH}/sources/runoff-mapper/bin/runoff-mapper.exe \
+	${BLDROOT}/${BRANCH}/sources/amip-forcing/bin/amip-forcing.exe \
+	${BLDROOT}/${BRANCH}/sources/tm5mp/build/appl-tm5.x \
 	/appl/climate/bin/cdo \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia.exe \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia \
-	$EC3SOURCES/oasis3-mct/util/lucia/balance.gnu \
-	${INSTALL_BIN}
+	${BLDROOT}/${BRANCH}/sources/oasis3-mct/util/lucia/lucia.exe \
+	${BLDROOT}/${BRANCH}/sources/oasis3-mct/util/lucia/lucia \
+	${BLDROOT}/${BRANCH}/sources/oasis3-mct/util/lucia/balance.gnu \
+	${INSTALLROOT}/${BRANCH}/${REVNO}
 }
 
 # Create run directory and fix stuff
@@ -172,9 +171,9 @@ create_ece_run () {
     sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" $SCRIPTDIR/rundir.patch | patch -u -p0
     mkdir -p $ECERUNTIME/tm5mp
     cd $ECERUNTIME/tm5mp
-    cp -rf $EC3SOURCES/tm5mp/rc .
-    cp -fr $EC3SOURCES/tm5mp/bin .
-    cp -fr $EC3SOURCES/tm5mp/build .
+    cp -rf ${BLDROOT}/${BRANCH}/sources/tm5mp/rc .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/bin .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/build .
     ln -s bin/pycasso_setup_tm5 setup_tm5
 }
 
