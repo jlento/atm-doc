@@ -25,7 +25,7 @@
 
 ### Script stuff that needs to be executed first ###
 
-[ "$0" != "$BASH_SOURCE" ] && sourced=true || sourced=false
+[[ "$0" != "${BASH_SOURCE}" ]] && sourced=true || sourced=false
 ${sourced} || set -e
 thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
@@ -35,7 +35,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 : ${SVNUSER:=}
 : ${BRANCH:=branches/development/2014/r1902-merge-new-components}
-: ${REVNO:=4483} #leave blank to get the latest
+: ${REVNO:=4531} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
 : ${RUNROOT:=$WRKDIR}
@@ -168,7 +168,7 @@ create_ece_run () {
     cp -f ${thisdir}/sisu.cfg.tmpl ${RUNROOT}/ece-${BRANCH}-r${REVNO}/classic/platform/
     cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}
     cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
-    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" ${thisdir}/rundir.patch | patch -u -p0
+    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALLROOT}/${BRANCH}/${REVNO}|" ${thisdir}/rundir.patch | patch -u -p0
     mkdir -p ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
     cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
     cp -rf ${BLDROOT}/${BRANCH}/sources/tm5mp/rc .
@@ -180,7 +180,9 @@ create_ece_run () {
 
 ### Execute the functions if this script is not sourced ###
 
-if [ !$sourced ]; then
+
+
+if ! $sourced; then
     updatesources
     ( module list -t 2>&1 ) > ${BLDROOT}/${BRANCH}/modules.log
     ( ecconfig       2>&1 ) > ${BLDROOT}/${BRANCH}/ecconf.log
