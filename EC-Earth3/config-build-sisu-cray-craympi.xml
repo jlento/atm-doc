@@ -68,7 +68,7 @@
 
     <Translation name="tm5_rcfile_config">
         <Description>TM5MP rcfile configuration</Description>
-        <Template>tm5mp/rc/pycasso-config-ecearth3.rc.tmpl</Template>
+        <Template>tm5mp/rc/main-config-ecearth3.rc.tmpl</Template>
         <Target>tm5mp/ecconfig-ecearth3.rc</Target>
         <Properties></Properties>
     </Translation>
