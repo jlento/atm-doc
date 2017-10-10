@@ -1,0 +1,73 @@
+--- Add support for the netcdf version used at Sisu
++++ base/mdf.F90	2017-08-18 11:20:31.000000000 +0300
+@@ -2388,6 +2388,7 @@
+                       (netcdf_version(1:5) == '4.1.3') .or. &
+                       (netcdf_version(1:3) == '4.2'  ) .or. &
+                       (netcdf_version(1:3) == '4.3'  ) .or. &
++                      (netcdf_version(1:5) == '4.4.1') .or. &
+                       (netcdf_version(1:5) == '4.4.0') ) then
+               ! add value of NF90_MPIIO to creation mode:
+               netcdf_cmode = netcdf_cmode + 8192
+@@ -2935,6 +2936,7 @@
+                       (netcdf_version(1:5) == '4.1.3') .or. &
+                       (netcdf_version(1:3) == '4.2') .or. &
+                       (netcdf_version(1:3) == '4.3') .or. &
++                      (netcdf_version(1:5) == '4.4.1') .or. &
+                       (netcdf_version(1:5) == '4.4.0') ) then
+               ! add value of NF90_MPIIO to creation mode:
+               netcdf_mode = netcdf_mode + 8192
+--- Fix a problem with ints and reals.
++++ proj/cb05/boundary.F90	2017-08-18 11:25:49.000000000 +0300
+@@ -460,6 +460,6 @@
+                  6.631579, 8.526316, 10.42105, 12.31579, 14.21053, 16.10526, 18., 19.89474, &
+                  21.78947, 23.68421, 25.57895, 27.47368, 29.36842, 31.26316, 33.15789, &
+                  35.05263, 36.94737, 38.84211, 40.73684, 42.63158, 44.52632, 46.42105, &
+-                 48.31579, 50.21053, 52.10526, 54, 55.89474, 57.78947, 59.68421, 61.57895, &
++                 48.31579, 50.21053, 52.10526, 54.0, 55.89474, 57.78947, 59.68421, 61.57895, &
+                  63.47368, 65.36842, 67.26316, 69.1579, 71.05264, 72.94736, 74.8421, &
+                  76.73684, 78.63158, 80.52631, 82.42105, 84.31579, 86.21053, 88.10526, 90./)
+--- proj/cb05/user_output_aerocom.F90.orig	2017-10-10 12:23:33.000000000 +0300
++++ proj/cb05/user_output_aerocom.F90	2017-10-10 12:28:47.000000000 +0300
+@@ -975,7 +975,8 @@
+           mixf(region)%f2d(loadsoa     )%mf  = metafields( -1     , 'loadsoa     ', 'Load of SOA                        ' , 'kg m-2    ', '',     'atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol'  )
+           mixf(region)%f2d(drysoa      )%mf  = metafields( -1     , 'drysoa      ', 'Dry Deposition of SOA              ' , 'kg m-2 s-1', 'down', &
+                            'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_dry_deposition'  )
+-          mixf(region)%f2d(wetsoa      )%mf  = metafields( -1     , 'wetsoa      ', 'Wet Deposition of SOA              ' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
++          mixf(region)%f2d(wetsoa      )%mf  = metafields( -1     , 'wetsoa      ', 'Wet Deposition of SOA              ' , 'kg m-2 s-1', 'down', &
++'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
+ 
+ 
+           if (stat_output) then
+--- proj/cb05/user_output_general.F90.orig	2017-10-10 12:23:33.000000000 +0300
++++ proj/cb05/user_output_general.F90	2017-10-10 12:28:47.000000000 +0300
+@@ -813,9 +813,12 @@
+           mixf(region)%f2d(loadsoa      )%mf  = metafields( -1     , 'loadsoa      ', 'Load of SOA                        ' , 'kg m-2    ', '',     'atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol'  )
+           mixf(region)%f2d(drysoa       )%mf  = metafields( -1     , 'drysoa       ', 'Dry Deposition of SOA              ' , 'kg m-2 s-1', 'down', &
+                            'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_dry_deposition'  )
+-          mixf(region)%f2d(wetsoa       )%mf  = metafields( -1     , 'wetsoa       ', 'Wet Deposition of SOA              ' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
+-          mixf(region)%f2d(p_svoc2d       )%mf  = metafields( -1     , 'p_svoc2D       ', 'Column integral of SVOC production' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
+-          mixf(region)%f2d(p_elvoc2d     )%mf  = metafields( -1     , 'p_elvoc2D       ', 'Column integral of ELVOC production  ' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
++          mixf(region)%f2d(wetsoa       )%mf  = metafields( -1     , 'wetsoa       ', 'Wet Deposition of SOA              ' , 'kg m-2 s-1', 'down', &
++'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
++          mixf(region)%f2d(p_svoc2d       )%mf  = metafields( -1     , 'p_svoc2D       ', 'Column integral of SVOC production' , 'kg m-2 s-1', 'down', &
++'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
++          mixf(region)%f2d(p_elvoc2d     )%mf  = metafields( -1     , 'p_elvoc2D       ', 'Column integral of ELVOC production  ' , 'kg m-2 s-1', &
++'down', 'tendency_of_atmosphere_mass_content_of_secondary_particulate_organic_matter_dry_aerosol_due_to_wet_deposition'  )
+           mixf(region)%f2d(p_gas_so42d       )%mf  = metafields( -1     , 'prod_gas_so42D       ', 'Column integral of gas SO4 production' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_gas_phase_sulfate'  )
+           mixf(region)%f2d(p_liq_so42d     )%mf  = metafields( -1     , 'prod_liq_so42D       ', 'Column integral of liq SO4 production  ' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_liquid_phase_sulfate'  )
+ 
+--- rc/main-config-ecearth3.rc.tmpl.orig	2017-10-10 12:27:18.000000000 +0300
++++ rc/main-config-ecearth3.rc.tmpl	2017-10-10 12:27:29.000000000 +0300
+@@ -38,10 +38,10 @@
+ !cprepro: PLT:ACTIVE:FFLAGS_FPP_PREFIX  PLT:ACTIVE:TM5_PPDEFS
+ 
+ compiler.flags.default.fflags  : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
+-compiler.flags.default.ldflags : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
++compiler.flags.default.ldflags : 
+ 
+ compiler.flags.optim.fflags  : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
+-compiler.flags.optim.ldflags : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
++compiler.flags.optim.ldflags : 
+ 
+ ! 'build.jobs' set in expert.rc, overwritten with script arg
+ maker         :  [[[PLT:ACTIVE:MAKE]]] -j %{build.jobs}

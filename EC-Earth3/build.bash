@@ -33,9 +33,9 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=juha.lento}
-: ${BRANCH:=trunk}
-: ${REVNO:=} #leave blank to get the latest
+: ${SVNUSER:=jukka-pekka.keskinen}
+: ${BRANCH:=branches/development/2014/r1902-merge-new-components}
+: ${REVNO:=4608} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
 : ${RUNROOT:=$WRKDIR}
@@ -125,13 +125,10 @@ oifs () {
 
 tm5 () {
     cd ${BLDROOT}/${BRANCH}/sources/tm5mp
+    # Patch tm5
+    patch -p0 -u < ${thisdir}/tm5-cray.patch
     export PATH=${BLDROOT}/${BRANCH}/sources/util/makedepf90/bin:$PATH
     ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
-    # Cray compiler internal error with -O2...
-    cd build
-    ftn -c -o ebischeme.o -h flex_mp=strict -h noomp -sreal64 -N 1023 -O1 -I/tmp/jlento/ece3/trunk/sources/oasis3-mct/ecconf/build/lib/psmile.MPI1 -I/opt/cray/netcdf-hdf5parallel/4.4.1/CRAY/8.3/include -I/opt/cray/hdf5-parallel/1.10.0.1/CRAY/8.3/include  ebischeme.F90
-    cd -
-    ./setup_tm5 -j 4 ecconfig-ecearth3.rc
 }
 
 runoff-mapper () {

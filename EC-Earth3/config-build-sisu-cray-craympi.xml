@@ -238,8 +238,6 @@
             <Description>General F90 flags for compiling</Description>
             <Type>STRING</Type>
             <Value>-sreal64 -em -hnoomp -O2</Value>
-            <!--The -hflex_mp=conservative -hfp1 -hadd_paren flags from www.ecmwf.int/sites/default/files/HPC-WS-Hague.pdf-->
-            <!--Value>-sreal64 -em -hnoomp -O0 -hflex_mp=conservative -hfp1 -hadd_paren</Value-->
         </Parameter>
 
         <Parameter name="FFLAGS_FREEFORM">
@@ -395,7 +393,7 @@
         <Parameter name="TM5_DEFAULT_FFLAGS">
             <Description>Default F90 flags for TM5 (ie without optimization)</Description>
             <Type>STRING</Type>
-            <Value>-h flex_mp=strict -h noomp -sreal64 -N 1023</Value>
+            <Value>-h noomp -s real64</Value>
         </Parameter>
 
         <Parameter name="TM5_OPTIM_FFLAGS">
