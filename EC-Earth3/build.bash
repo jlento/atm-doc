@@ -112,45 +112,7 @@ oifs () {
     cd ${BLDROOT}/${BRANCH}/sources/ifs-36r4
 
     # These are clear bugs...
-    patch -f -p0 <<'EOF'
---- src/ifsaux/module/stack_mix.F90.orig	2017-09-08 12:28:59.000000000 +0300
-+++ src/ifsaux/module/stack_mix.F90	        2017-09-08 12:38:59.000000000 +0300
-@@ -2,6 +2,7 @@
- 
- USE PARKIND1  ,ONLY : JPIM     ,JPRB     ,JPIB
- USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
-+USE ISO_C_BINDING ,ONLY : C_LONG_LONG
- 
- IMPLICIT NONE
- 
-@@ -47,13 +48,13 @@
-   
- SUBROUTINE GETSTACKUSAGEB(K)
- INTEGER(KIND=JPIB),INTENT(OUT) :: K
--INTEGER(KIND=JPIB) :: GETSTACKUSAGE
-+INTEGER(KIND=C_LONG_LONG) :: GETSTACKUSAGE
- K=GETSTACKUSAGE()
- END SUBROUTINE GETSTACKUSAGEB
- 
- SUBROUTINE GETSTACKUSAGEM(K)
- INTEGER(KIND=JPIB),INTENT(OUT) :: K
--INTEGER(KIND=JPIM) :: GETSTACKUSAGE
-+INTEGER(KIND=C_LONG_LONG) :: GETSTACKUSAGE
- K=GETSTACKUSAGE()
- END SUBROUTINE GETSTACKUSAGEM
- 
---- src/ifs/module/varbc_setup.F90.orig	2017-09-08 12:51:53.000000000 +0300
-+++ src/ifs/module/varbc_setup.F90	2017-09-08 12:52:19.000000000 +0300
-@@ -149,7 +149,7 @@
- ! Arrays for parallel summation
- ! -----------------------------
- REAL(KIND=JPRB),    ALLOCATABLE :: aparams_comp(:,:,:)   ! aparams partial sum 
--REAL(KIND=JPRB),    ALLOCATABLE :: nparams_comp(:,:)     ! aparams number of terms
-+INTEGER(KIND=JPIM), ALLOCATABLE :: nparams_comp(:,:)     ! aparams number of terms
- INTEGER(KIND=JPIM), ALLOCATABLE :: nhstfgdep_comp(:,:,:) ! nhstfgdep partial sum
- 
- !-----------------------------------------------------------------------
-EOF
+    patch -f -p0 < ${thisdir}/ifs.pathc
 
     make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
