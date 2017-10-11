@@ -82,6 +82,7 @@ updatesources () {
 ecconfig () {
     cd ${BLDROOT}/${BRANCH}/sources
     expand-variables ${thisdir}/config-build-sisu-cray-craympi.xml config-build.xml
+    patch -p0 -u < ${thisdir}/ecconf.patch
     ./util/ec-conf/ec-conf --platform=sisu-cray-craympi config-build.xml
 }
 
@@ -119,6 +120,7 @@ oifs () {
 
     # And here is something fishy going on with the build system...
     touch $(make BUILD_ARCH=ecconf master | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
 }
 
@@ -127,6 +129,7 @@ tm5 () {
     cd ${BLDROOT}/${BRANCH}/sources/tm5mp
     # Patch tm5
     patch -p0 -u < ${thisdir}/tm5-cray.patch
+    rm proj/cb05/boundary.F90.orig
     export PATH=${BLDROOT}/${BRANCH}/sources/util/makedepf90/bin:$PATH
     ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
 }

@@ -480,6 +480,12 @@
             <Value>mfhdf df</Value>
         </Parameter>
 
+	 <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
     </Platform>
 
 </Configuration>

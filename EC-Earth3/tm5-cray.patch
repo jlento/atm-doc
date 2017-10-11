@@ -56,18 +56,3 @@
            mixf(region)%f2d(p_gas_so42d       )%mf  = metafields( -1     , 'prod_gas_so42D       ', 'Column integral of gas SO4 production' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_gas_phase_sulfate'  )
            mixf(region)%f2d(p_liq_so42d     )%mf  = metafields( -1     , 'prod_liq_so42D       ', 'Column integral of liq SO4 production  ' , 'kg m-2 s-1', 'down', 'tendency_of_atmosphere_mass_content_of_liquid_phase_sulfate'  )
  
---- rc/main-config-ecearth3.rc.tmpl.orig	2017-10-10 12:27:18.000000000 +0300
-+++ rc/main-config-ecearth3.rc.tmpl	2017-10-10 12:27:29.000000000 +0300
-@@ -38,10 +38,10 @@
- !cprepro: PLT:ACTIVE:FFLAGS_FPP_PREFIX  PLT:ACTIVE:TM5_PPDEFS
- 
- compiler.flags.default.fflags  : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
--compiler.flags.default.ldflags : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
-+compiler.flags.default.ldflags : 
- 
- compiler.flags.optim.fflags  : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
--compiler.flags.optim.ldflags : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
-+compiler.flags.optim.ldflags : 
- 
- ! 'build.jobs' set in expert.rc, overwritten with script arg
- maker         :  [[[PLT:ACTIVE:MAKE]]] -j %{build.jobs}
