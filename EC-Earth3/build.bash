@@ -113,13 +113,19 @@ oifs () {
     cd ${BLDROOT}/${BRANCH}/sources/ifs-36r4
 
     # These are clear bugs...
-    patch -f -p0 < ${thisdir}/ifs.pathc
+    patch -f -p0 < ${thisdir}/ifs.patch
 
     make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
 
     # And here is something fishy going on with the build system...
-    touch $(make BUILD_ARCH=ecconf master | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
+    make BUILD_ARCH=ecconf master
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
+    make BUILD_ARCH=ecconf master
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
     make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
 }
