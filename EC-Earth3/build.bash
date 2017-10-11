@@ -146,45 +146,42 @@ runoff-mapper () {
 }
 
 amip-forcing () {
-    cd $EC3SOURCES/amip-forcing/src
+    cd ${BLDROOT}/${BRANCH}/sources/amip-forcing/src
     make
 }
 
 # Install
 install_all () {
-    cd $EC3SOURCES
-    mkdir -p ${INSTALL_BIN}
+    mkdir -p ${INSTALLROOT}/${BRANCH}/${REVNO}
     cp -f  \
-	$EC3SOURCES/xios-2/bin/xios_server.exe \
-	$EC3SOURCES/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
-	$EC3SOURCES/ifs-36r4/bin/ifsmaster-ecconf \
-	$EC3SOURCES/runoff-mapper/bin/runoff-mapper.exe \
-	$EC3SOURCES/amip-forcing/bin/amip-forcing.exe \
-	$EC3SOURCES/tm5mp/build/appl-tm5.x \
+	${BLDROOT}/${BRANCH}/sources/xios-2/bin/xios_server.exe \
+	${BLDROOT}/${BRANCH}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
+	${BLDROOT}/${BRANCH}/sources/ifs-36r4/bin/ifsmaster-ecconf \
+	${BLDROOT}/${BRANCH}/sources/runoff-mapper/bin/runoff-mapper.exe \
+	${BLDROOT}/${BRANCH}/sources/amip-forcing/bin/amip-forcing.exe \
+	${BLDROOT}/${BRANCH}/sources/tm5mp/build/appl-tm5.x \
 	/appl/climate/bin/cdo \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia.exe \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia \
-	$EC3SOURCES/oasis3-mct/util/lucia/balance.gnu \
-	${INSTALL_BIN}
+        ${INSTALLROOT}/${BRANCH}/${REVNO}
 }
 
 # Create run directory and fix stuff
 
 create_ece_run () {
-    cd $WRKDIR
-    mkdir -p $ECERUNTIME
-    cp -fr $BDIR/$EC3/runtime/* $ECERUNTIME/
-    cp -f $SCRIPTDIR/sisu.cfg.tmpl $ECERUNTIME/classic/platform/
-    cd $ECERUNTIME
+    cd $RUNROOT
+    mkdir -p ece-${BRANCH}-r${REVNO}
+    cp -fr ${BLDROOT}/${BRANCH}/runtime/* ${RUNROOT}/ece-${BRANCH}-r${REVNO}/
+    cp -f ${thisdir}/sisu.cfg.tmpl ${RUNROOT}/ece-${BRANCH}-r${REVNO}/classic/platform/
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}
     cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
-    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" $SCRIPTDIR/rundir.patch | patch -u -p0
-    mkdir -p $ECERUNTIME/tm5mp
-    cd $ECERUNTIME/tm5mp
-    cp -rf $EC3SOURCES/tm5mp/rc .
-    cp -fr $EC3SOURCES/tm5mp/bin .
-    cp -fr $EC3SOURCES/tm5mp/build .
+    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALLROOT}/${BRANCH}/${REVNO}|" ${thisdir}/rundir.patch | patch -u -p0
+    mkdir -p ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
+    cp -rf ${BLDROOT}/${BRANCH}/sources/tm5mp/rc .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/bin .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/build .
     ln -s bin/pycasso_setup_tm5 setup_tm5
 }
+
 
 apply_ECE_mods() {
     cd $EC3SOURCES
