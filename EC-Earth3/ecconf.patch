@@ -1,0 +1,15 @@
+--- tm5mp/rc/main-config-ecearth3.rc.tmpl.orig	2017-10-10 12:27:18.000000000 +0300
++++ tm5mp/rc/main-config-ecearth3.rc.tmpl	2017-10-10 12:27:29.000000000 +0300
+@@ -38,10 +38,10 @@
+ !cprepro: PLT:ACTIVE:FFLAGS_FPP_PREFIX  PLT:ACTIVE:TM5_PPDEFS
+ 
+ compiler.flags.default.fflags  : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
+-compiler.flags.default.ldflags : [[[PLT:ACTIVE:TM5_DEFAULT_FFLAGS]]]
++compiler.flags.default.ldflags : 
+ 
+ compiler.flags.optim.fflags  : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
+-compiler.flags.optim.ldflags : [[[PLT:ACTIVE:TM5_OPTIM_FFLAGS]]]
++compiler.flags.optim.ldflags : 
+ 
+ ! 'build.jobs' set in expert.rc, overwritten with script arg
+ maker         :  [[[PLT:ACTIVE:MAKE]]] -j %{build.jobs}

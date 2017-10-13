@@ -33,9 +33,9 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=juha.lento}
-: ${BRANCH:=trunk}
-: ${REVNO:=} #leave blank to get the latest
+: ${SVNUSER:=jukka-pekka.keskinen}
+: ${BRANCH:=branches/development/2014/r1902-merge-new-components}
+: ${REVNO:=4608} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
 : ${RUNROOT:=$WRKDIR}
@@ -82,6 +82,7 @@ updatesources () {
 ecconfig () {
     cd ${BLDROOT}/${BRANCH}/sources
     expand-variables ${thisdir}/config-build-sisu-cray-craympi.xml config-build.xml
+    patch -p0 -u < ${thisdir}/ecconf.patch
     ./util/ec-conf/ec-conf --platform=sisu-cray-craympi config-build.xml
 }
 
@@ -112,26 +113,31 @@ oifs () {
     cd ${BLDROOT}/${BRANCH}/sources/ifs-36r4
 
     # These are clear bugs...
-    patch -f -p0 < ${thisdir}/ifs.pathc
+    patch -f -p0 < ${thisdir}/ifs.patch
 
     make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
 
     # And here is something fishy going on with the build system...
-    touch $(make BUILD_ARCH=ecconf master | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
+    make BUILD_ARCH=ecconf master
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
+    make BUILD_ARCH=ecconf master
+    touch $(make BUILD_ARCH=ecconf master 2>&1 | grep -o '^[^:]*\.F90:' | tr -d ':' | sort -u)
+    make BUILD_ARCH=ecconf -j 8 lib
     make BUILD_ARCH=ecconf master
 }
 
 
 tm5 () {
     cd ${BLDROOT}/${BRANCH}/sources/tm5mp
+    # Patch tm5
+    patch -p0 -u < ${thisdir}/tm5-cray.patch
+    rm proj/cb05/boundary.F90.orig
     export PATH=${BLDROOT}/${BRANCH}/sources/util/makedepf90/bin:$PATH
     ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
-    # Cray compiler internal error with -O2...
-    cd build
-    ftn -c -o ebischeme.o -h flex_mp=strict -h noomp -sreal64 -N 1023 -O1 -I/tmp/jlento/ece3/trunk/sources/oasis3-mct/ecconf/build/lib/psmile.MPI1 -I/opt/cray/netcdf-hdf5parallel/4.4.1/CRAY/8.3/include -I/opt/cray/hdf5-parallel/1.10.0.1/CRAY/8.3/include  ebischeme.F90
-    cd -
-    ./setup_tm5 -j 4 ecconfig-ecearth3.rc
 }
 
 runoff-mapper () {
@@ -140,45 +146,42 @@ runoff-mapper () {
 }
 
 amip-forcing () {
-    cd $EC3SOURCES/amip-forcing/src
+    cd ${BLDROOT}/${BRANCH}/sources/amip-forcing/src
     make
 }
 
 # Install
 install_all () {
-    cd $EC3SOURCES
-    mkdir -p ${INSTALL_BIN}
+    mkdir -p ${INSTALLROOT}/${BRANCH}/${REVNO}
     cp -f  \
-	$EC3SOURCES/xios-2/bin/xios_server.exe \
-	$EC3SOURCES/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
-	$EC3SOURCES/ifs-36r4/bin/ifsmaster-ecconf \
-	$EC3SOURCES/runoff-mapper/bin/runoff-mapper.exe \
-	$EC3SOURCES/amip-forcing/bin/amip-forcing.exe \
-	$EC3SOURCES/tm5mp/build/appl-tm5.x \
+	${BLDROOT}/${BRANCH}/sources/xios-2/bin/xios_server.exe \
+	${BLDROOT}/${BRANCH}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe \
+	${BLDROOT}/${BRANCH}/sources/ifs-36r4/bin/ifsmaster-ecconf \
+	${BLDROOT}/${BRANCH}/sources/runoff-mapper/bin/runoff-mapper.exe \
+	${BLDROOT}/${BRANCH}/sources/amip-forcing/bin/amip-forcing.exe \
+	${BLDROOT}/${BRANCH}/sources/tm5mp/build/appl-tm5.x \
 	/appl/climate/bin/cdo \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia.exe \
-	$EC3SOURCES/oasis3-mct/util/lucia/lucia \
-	$EC3SOURCES/oasis3-mct/util/lucia/balance.gnu \
-	${INSTALL_BIN}
+        ${INSTALLROOT}/${BRANCH}/${REVNO}
 }
 
 # Create run directory and fix stuff
 
 create_ece_run () {
-    cd $WRKDIR
-    mkdir -p $ECERUNTIME
-    cp -fr $BDIR/$EC3/runtime/* $ECERUNTIME/
-    cp -f $SCRIPTDIR/sisu.cfg.tmpl $ECERUNTIME/classic/platform/
-    cd $ECERUNTIME
+    cd $RUNROOT
+    mkdir -p ece-${BRANCH}-r${REVNO}
+    cp -fr ${BLDROOT}/${BRANCH}/runtime/* ${RUNROOT}/ece-${BRANCH}-r${REVNO}/
+    cp -f ${thisdir}/sisu.cfg.tmpl ${RUNROOT}/ece-${BRANCH}-r${REVNO}/classic/platform/
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}
     cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
-    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALL_BIN}|" $SCRIPTDIR/rundir.patch | patch -u -p0
-    mkdir -p $ECERUNTIME/tm5mp
-    cd $ECERUNTIME/tm5mp
-    cp -rf $EC3SOURCES/tm5mp/rc .
-    cp -fr $EC3SOURCES/tm5mp/bin .
-    cp -fr $EC3SOURCES/tm5mp/build .
+    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALLROOT}/${BRANCH}/${REVNO}|" ${thisdir}/rundir.patch | patch -u -p0
+    mkdir -p ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
+    cd ${RUNROOT}/ece-${BRANCH}-r${REVNO}/tm5mp
+    cp -rf ${BLDROOT}/${BRANCH}/sources/tm5mp/rc .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/bin .
+    cp -fr ${BLDROOT}/${BRANCH}/sources/tm5mp/build .
     ln -s bin/pycasso_setup_tm5 setup_tm5
 }
+
 
 apply_ECE_mods() {
     cd $EC3SOURCES
