@@ -10,8 +10,16 @@ Notes and comments on building coupled climate model EC-Earth3 in the configurat
 The current build process using Intel and Cray compiler suites is documented in the files [build-intel.bash](build-intel.bash) and [build.bash](build.bash), respectively.
 
 
-Build notes, trunk revision 4536, Cray compiler suite
+Build notes, Cray compiler suite
 -----------------------------------------------------
+
+- Branch: branches/development/2014/r1902-merge-new-components
+- revision 4608
+
+Some of these comments/fixes apply to the trunk, and may be irrelevant.
+
+This branch should be merged to trunk?
+
 
 ### External libraries
 
