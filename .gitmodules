@@ -1,6 +1,3 @@
 [submodule "conda/fftw-feedstock"]
 	path = conda/fftw-feedstock
 	url = https://github.com/jlento/fftw-feedstock.git
-[submodule "conda/eccodes-feedstock"]
-	path = conda/eccodes-feedstock
-	url = https://github.com/conda-forge/eccodes-feedstock.git
