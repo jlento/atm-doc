@@ -1,0 +1,33 @@
+package:
+  name: libemos
+  version: "4.5.1"
+
+source:
+  url: https://software.ecmwf.int/wiki/download/attachments/3473472/libemos-4.5.1-Source.tar.gz
+  md5: eec1ef4de841df3c68c08fa94d7939ff
+
+  #  url: https://software.ecmwf.int/wiki/download/attachments/3473472/libemos-4.4.9-Source.tar.gz
+#  md5: 24d098cd062d443a544fe17727726285
+
+build:
+  string: gfortran485_0
+
+requirements:
+  build:
+    - python
+    - boost
+    - eccodes 2.5.0
+    - eccodes-fortran 2.5.0 gfortran485*
+    - fftw 3.3.6 gfortran485*
+    - gcc 4.8.5
+  run:
+    - boost
+    - eccodes 2.5.0
+    - eccodes-fortran 2.5.0 gfortran485*
+    - fftw 3.3.6 gfortran485*
+    - libgcc 4.8.5
+    - libgfortran 3.0.0
+
+about:
+  home: https://software.ecmwf.int/wiki/display/EMOS/Emoslib
+  license: Apache License 2.0

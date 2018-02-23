@@ -1,0 +1,55 @@
+{% set version = "2.5.0" %}
+
+package:
+  name: eccodes-fortran
+  version: {{ version }}
+
+source:
+  url: https://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-{{ version }}-Source.tar.gz
+  fn: eccodes-{{ version }}-Source.tar.gz
+  sha256: 18ab44bc444168fd324d07f7dea94f89e056f5c5cd973e818c8783f952702e4e
+
+build:
+  string: gfortran485_1
+  skip: true  # [win]
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - cmake
+    - boost 1.63.*
+    - jasper
+    - libpng >=1.6.28,<1.7
+    - libnetcdf 4.4.*
+    - perl 5.22.2.1
+    - gcc 4.8.5
+    - eccodes {{ version }}
+  run:
+    - jasper
+    - libpng >=1.6.28,<1.7
+    - libnetcdf 4.4.*
+    - libgcc 4.8.5
+    - libgfortran 3.0.0
+    - eccodes {{ version }}
+test:
+  commands:
+    - codes_info
+    - ls $(codes_info -s)
+    - ls $(codes_info -d)
+    - conda inspect linkages -p $PREFIX eccodes  # [not win]
+    - conda inspect objects -p $PREFIX eccodes  # [osx]
+
+about:
+  home: https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home
+  license: Apache 2.0
+  license_family: Apache
+  summary: ECMWF ecCodes Copyright 2005-2017 ECMWF.
+
+extra:
+  original:
+    - https://raw.githubusercontent.com/conda-forge/eccodes-feedstock/master/recipe/meta.yaml
+  recipe-maintainers:
+    - kmuehlbauer
+    - pelson
+    - ocefpaf
+    - kynan

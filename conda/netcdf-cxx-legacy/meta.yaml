@@ -11,8 +11,11 @@ build:
 requirements:
   build:
     - netcdf4
+    - gcc
   run:
     - netcdf4
+    - libcxx
+    
 about:
   home: https://www.unidata.ucar.edu/software/netcdf
   license: The NetCDF Copyright
