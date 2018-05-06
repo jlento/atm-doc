@@ -54,7 +54,7 @@ cow () {
              'https://translate.google.com/translate_tts'  > $cache_file
     fi
     local y=$(( theight - cow_height - 1 ))
-    tput cup $y 0 && cowsay -W $((cow_width-4)) "$1" | box | alignbl $cow_width $cow_height
+    tput cup $y 0 && cowsay -W $((cow_width-4)) "$1" | alignbl $cow_width $cow_height
     $mplayer -really-quiet -noconsolecontrols ${cache_dir}/$h.mp3 2> /dev/null
 }
 
@@ -64,6 +64,7 @@ tput sc
 mplayer=:
 source $1 > /dev/null
 
+# The play
 mplayer=mplayer
 source $1
 
