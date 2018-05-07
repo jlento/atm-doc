@@ -1,5 +1,11 @@
 #!/bin/bash
 
-cow "Hello dude! What's up?"
+# Actors to stage!
+koala
+cow
 
-cow "And now some longer text, right? Maybe even so long that it will be broken to multiple lines!"
+# Let the play begin!
+
+koala "Hello dude! What's up?"
+
+cow "I'm great! Thanks for asking. How are you? Any computer headaches?"
