@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+export cache_dir=cache
+mkdir -p $cache_dir
 
 requires () {
     local missing=false
@@ -20,43 +21,78 @@ requires () {
 
 box () {
     local s="$(cat)"
-    local x f ss
-    read x f <<<$(wc -L <<<"$s")
+    local h w f ss
+    read h w f <<<$(wc -l -L <<<"$s")
+    for i in $(seq 1 $(( $2 - h ))); do
+        printf "%${1}s\n" " "
+    done
     while IFS='' read -r ss || [[ -n "$ss" ]]; do
-        printf "%-${x}s\n" "$ss"
+        ss="$(printf "%-${w}s" "$ss")"
+        case $3 in
+            bottom-right)
+                printf "%${1}s\n" "$ss"
+                ;;
+            bottom-left)
+                printf "%-${1}s\n" "$ss"
+                ;;
+            *)
+                echo "Unknown alignment '$a' in box()" >&2
+                return 1
+                ;;
+        esac
     done <<<"$s"
 }
 
-blbox () {
-    local s="$(cat)"
-    local x=$1
-    local y=$2
-    local w=$3
-    local h=$4
-    local hh ww f i ss
-    read hh ww f <<<$(wc -l -L <<<"$s")
-    if (( ww > w )); then
-        echo "Too wide to fit into the box ($w,$h):" >&2
-        echo "$s" >&2
-        return 1
+# Deal with dumb cows
+silence () {
+    if [[ -n "$1" ]]; then
+        cat
+    else
+        sed '1,3s/.*/ /;4,5s/\\/ /'
     fi
-    if (( hh > h )); then
-        echo "Too high to fit into the box ($w,$h):" >&2
-        echo "$s" >&2
-        return 1
-    fi
-    tput cup $y 0
-    local skip=":"
-    if (( x > 0 )); then
-        skip="tput cuf $x"
-    fi
-    for i in $(seq 1 $((h-hh))); do
-        $skip; printf "%${w}s\n" " "
-    done
-    while IFS='' read -r ss || [[ -n "$ss" ]]; do
-        $skip; printf "%-${w}s\n" "$ss"
-    done <<<"$s"
 }
+
+draw () {
+    local t="$(cat)"
+    local x y w h a
+    read -r x y w h a <<<"$1"
+    shift 
+    local s
+    local i=0
+    echo "$t" | cowsay -W $(( w - 4 )) "$@" | silence "$t" | box $w $h $a | \
+        while IFS='' read -r s || [[ -n "$s" ]]; do
+            tput cup $((y + i)) $x
+            ((i++))
+            printf "%s" "$s"
+        done
+}
+
+play () {
+    tmux new-session -s play "bash $1"
+}
+
+the-end () {
+    tmux kill-session -t play
+}
+
+requires tmux tput cowsay mplayer espeak curl
+
+export -f requires draw box play silence the-end
+
+# Quick test run to catch errors and cache voices
+#alias say=:
+#
+#tmux kill-session -t play
+
+# The play
+#mplayer=mplayer
+#source $1
+
+
+# Attic of ideas
+
+# xcowsay 'Hello dude!' --at=50,400 & xcowsay --at=900,500 --image=mcow_med.png -l 'Hello to yourself!'
+
 
 actor () {
     local looks=$1
@@ -94,43 +130,3 @@ actor () {
     cowsay -f $looks -W $((w - 4)) "$s" | blbox $x $y $w $h
     $mplayer -really-quiet -noconsolecontrols ${cache_file} 2> /dev/null
 }
-
-
-koala () {
-    actor koala espeak 0 $((console_height)) 35 10 "$1"
-}
-
-cow () {
-    actor default mplayer 35 $((console_height)) 44 10 "$1"
-}
-
-# Voice cache
-cache_dir=cache
-mkdir -p $cache_dir
-
-# Scene
-term_width=$(tput cols)
-term_height=$(tput lines)
-
-# Console window
-let "console_height = term_height - 11"
-
-# Check requirements
-requires mplayer espeak cowsay curl tput
-
-tput sc
-
-# Quick test run to catch errors and cache voices
-mplayer=:
-source $1 > /dev/null
-
-# The play
-mplayer=mplayer
-source $1
-
-tput rc
-
-
-# Attic of ideas
-
-# xcowsay 'Hello dude!' --at=50,400 & xcowsay --at=900,500 --image=mcow_med.png -l 'Hello to yourself!'
