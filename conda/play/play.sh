@@ -44,7 +44,7 @@ box () {
 }
 
 # Deal with dumb cows
-silence () {
+empty () {
     if [[ -n "$1" ]]; then
         cat
     else
@@ -52,14 +52,14 @@ silence () {
     fi
 }
 
-draw () {
+show () {
     local t="$(cat)"
     local x y w h a
     read -r x y w h a <<<"$1"
     shift 
     local s
     local i=0
-    echo "$t" | cowsay -W $(( w - 4 )) "$@" | silence "$t" | box $w $h $a | \
+    echo "$t" | cowsay -W $(( w - 4 )) "$@" | empty "$t" | box $w $h $a | \
         while IFS='' read -r s || [[ -n "$s" ]]; do
             tput cup $((y + i)) $x
             ((i++))
@@ -67,8 +67,34 @@ draw () {
         done
 }
 
+google_translate_speak () {
+    local t=$(cat)
+    curl -G -d 'ie=UTF-8' -d 'client=tw-ob' --data-urlencode "q=$t" -d 'tl=en' \
+         -H 'Referer: http://translate.google.com/' \
+         -H 'User-Agent: stagefright/1.2 (Linux;Android 5.0)' \
+         -s 'https://translate.google.com/translate_tts'
+}
+
+saywith () {
+    local t=$(cat)
+    local fname=$(md5sum <<<"$1 $t" | cut -f 1 -d ' ')
+    local cache_file=${cache_dir}/${fname}
+    if [[ ! -f $cache_file ]]; then
+        $@ <<<"$t" > $cache_file
+    fi
+    if $cache_mode; then
+        :
+    else
+        mplayer ${cache_file} > /dev/null 2>&1
+    fi
+}
+
+cache () {
+    tmux new-session -s play "export cache_mode=true; bash $1"
+}
+
 play () {
-    tmux new-session -s play "bash $1"
+    tmux new-session -s play "export cache_mode=false; bash $1"
 }
 
 the-end () {
@@ -77,7 +103,7 @@ the-end () {
 
 requires tmux tput cowsay mplayer espeak curl
 
-export -f requires draw box play silence the-end
+export -f requires show saywith box play empty the-end google_translate_speak
 
 # Quick test run to catch errors and cache voices
 #alias say=:
@@ -108,8 +134,6 @@ actor () {
         echo "$im" | blbox $x $y $w $h
         return 0
     fi
-    local fname=$(md5sum <<<"$type $voice $s" | cut -f 1 -d ' ')
-    local cache_file=${cache_dir}/${fname}
     if [ ! -f $cache_file ]; then
         case $voice in
             mplayer)
