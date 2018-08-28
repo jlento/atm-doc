@@ -34,8 +34,8 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 ### Local/user defaults ###
 
 : ${SVNUSER:=}
-: ${BRANCH:=branches/development/2014/r1902-merge-new-components}
-: ${REVNO:=4531} #leave blank to get the latest
+: ${BRANCH:=trunk}
+: ${REVNO:=5801} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
 : ${RUNROOT:=$WRKDIR}
@@ -127,7 +127,7 @@ oifs () {
 
 tm5 () {
     cd ${BLDROOT}/${BRANCH}/sources/tm5mp
-    patch -u -p0 < $thisdir/tm5.patch
+    # patch -u -p0 < $thisdir/tm5.patch
     export PATH=${BLDROOT}/${BRANCH}/sources/util/makedepf90/bin:$PATH
     ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
 }
