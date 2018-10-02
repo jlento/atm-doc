@@ -32,7 +32,7 @@
  # -----------------------------------------------------------------------------
  
 -amip_exe_file=${ecearth_src_dir}/amip-forcing/bin/amip-forcing.exe
-+amip_exe_file=/homeappl/home/jpkeskin/appl_sisu/ece3/trunk/5801/amip-forcing.exe
++amip_exe_file=THIS_NEEDS_TO_BE_CHANGED/amip-forcing.exe
  amip_numproc=1
  
  # -----------------------------------------------------------------------------
@@ -42,8 +42,8 @@
  # executable
 -has_config tm5:co2  && tm5_exe_file=${ecearth_src_dir}/tm5mp/build-co2/appl-tm5-co2.x
 -has_config tm5:chem && tm5_exe_file=${ecearth_src_dir}/tm5mp/build/appl-tm5.x
-+tm5_exe_file=/homeappl/home/jpkeskin/appl_sisu/ece3/trunk/5801/appl-tm5.x
-+tm5_exe_file=/homeappl/home/jpkeskin/appl_sisu/ece3/trunk/5801/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
  
  # fields sent back to IFS
  has_config tm5:o3   && tm5_to_ifs=O3 || tm5_to_ifs=
@@ -121,7 +121,7 @@
  has_config pisces:offline && nem_config_name=${nem_grid}_OFF_PISCES
  
 -nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_config_name}/BLD/bin/nemo.exe
-+nem_exe_file=/homeappl/home/jpkeskin/appl_sisu/ece3/trunk/5801/nemo.exe
++nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
  
  nem_numproc=[[[MOD:NEM:NUMPROC]]]
  
