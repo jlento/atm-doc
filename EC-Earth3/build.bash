@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=jukka-pekka.keskinen}
+: ${SVNUSER:=}
 : ${BRANCH:=branches/development/2014/r1902-merge-new-components}
 : ${REVNO:=4608} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
