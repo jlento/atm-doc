@@ -46,7 +46,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 module use --append /appl/climate/modulefiles
 module swap PrgEnv-cray PrgEnv-intel
-module load cray-netcdf-hdf5parallel udunits hdf grib_api/1.17.0 gribex
+module load cray-netcdf-hdf5parallel udunits hdf grib_api/1.17.0 gribex svn
 
 
 

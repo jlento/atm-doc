@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=}
+: ${SVNUSER:=jukka-pekka.keskinen}
 : ${BRANCH:=branches/development/2014/r1902-merge-new-components}
 : ${REVNO:=4608} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
@@ -45,7 +45,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 ### Environment setup ###
 
 module use --append /appl/climate/modulefiles
-module load cray-hdf5-parallel cray-netcdf-hdf5parallel grib_api/1.23.1 hdf/4.2.12 libemos/4.0.7
+module load cray-hdf5-parallel cray-netcdf-hdf5parallel grib_api/1.23.1 hdf/4.2.12 libemos/4.0.7 svn
 
 
 
