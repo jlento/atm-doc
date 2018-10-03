@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=jukka-pekka.keskinen}
+: ${SVNUSER:=}
 : ${TAG:=3.2.3}
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
@@ -84,8 +84,8 @@ updatesources () {
 
 ecconfig () {
     cd ${BLDROOT}/${TAG}/sources    
-    cp -f ${thisdir}/csc-sisu-cray-intel.xml platform/
-    cp -f ${thisdir}/config-build.xml .
+    expand-variables ${thisdir}/csc-sisu-cray-intel.xml platform/csc-sisu-cray-intel.xml
+    expand-variables ${thisdir}/config-build.xml config-build.xml
     ./util/ec-conf/ec-conf --platform=csc-sisu-cray-intel config-build.xml
 }
 

@@ -13,7 +13,7 @@
   <Parameter name="ECEARTH_SRC_DIR">
     <Description>EC-Earth base directory</Description>
     <Type>PATH</Type>
-    <Value>${BLDROOT}/${BRANCH}/sources</Value>
+    <Value>${BLDROOT}/${TAG}/sources</Value>
   </Parameter>
 
   <Parameter name="MPI_BASE_DIR">
@@ -409,7 +409,7 @@
   <Parameter name="MAKEDEPF90">
     <Description>F90 dependency generator</Description>
     <Type>STRING</Type>
-    <Value>${BLDROOT}/${BRANCH}/sources/util/makedepf90/bin/makedepf90</Value>
+    <Value>${BLDROOT}/${TAG}/sources/util/makedepf90/bin/makedepf90</Value>
   </Parameter>
 
 </Platform>
