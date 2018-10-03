@@ -34,8 +34,8 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 ### Local/user defaults ###
 
 : ${SVNUSER:=}
-: ${BRANCH:=trunk}
-: ${REVNO:=5801} #leave blank to get the latest
+: ${BRANCH:=tags/3.2.3}
+: ${REVNO:=} #leave blank to get the latest
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
 : ${RUNROOT:=$WRKDIR}
