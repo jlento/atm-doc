@@ -166,6 +166,7 @@ create_ece_run () {
     mkdir -p ece-${TAG}-r${REVNO}
     cp -fr ${BLDROOT}/${TAG}/runtime/* ${RUNROOT}/ece-${TAG}-r${REVNO}/
     cp -f ${thisdir}/sisu.cfg.tmpl ${RUNROOT}/ece-${TAG}-r${REVNO}/classic/platform/
+    cp -f ${thisdir}/sisu.xml ${RUNROOT}/ece-${TAG}-r${REVNO}/classic/platform/
     cd ${RUNROOT}/ece-${TAG}-r${REVNO}
     cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
     sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALLROOT}/${TAG}/${REVNO}|" ${thisdir}/rundir.patch | patch -u -p0
