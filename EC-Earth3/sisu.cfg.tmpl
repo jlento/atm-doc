@@ -50,6 +50,10 @@ function configure()
         set -u
     fi
 
+    # Location of cdo
+    shopt -s expand_aliases    
+    alias cdo="$USERAPPL/bioconda_env/nctools/bin/cdo"
+
     # Add directories to the shared library search path
     if [ -n "[[[PLT:ACTIVE:ADD_TO_LD_LIBRARY_PATH]]]" ]
     then
