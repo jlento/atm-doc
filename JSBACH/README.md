@@ -5,11 +5,13 @@ juha.lento@csc.fi, 2019-01-15
 
 ## Download source and modified build script
 
-If you build under `$TMPDIR` instead of under `$WRKDIR`, build is faster, but you need to remember to copy the file.
+If you build under `$TMPDIR` instead of under `$WRKDIR`, build is faster, but
+you need to remember to copy the results somewhere under `$HOME`, `$USERAPPL`,
+or `$WRKDIR`.
 
 ```
 cd $WRKDIR/DONOTREMOVE
-svn checkout --username leif.backman https://svn.zmaw.de/svn/cosmos/branches/mpiesm-landveg mpiesm-landveg
+svn checkout --username NNN https://svn.zmaw.de/svn/cosmos/branches/mpiesm-landveg mpiesm-landveg
 cd mpiesm-landveg
 wget https://raw.githubusercontent.com/jlento/atm-doc/master/JSBACH/landveg-compile-taito.ksh
 ```
