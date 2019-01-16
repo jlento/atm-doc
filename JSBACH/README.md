@@ -40,7 +40,7 @@ export FCFLAGS="-I${I_MPI_ROOT}/intel64/include"
 export MPI_C_INCLUDE="-I${I_MPI_ROOT}/intel64/include"
 export MPI_FC_INCLUDE="-I${I_MPI_ROOT}/intel64/include"
 export LIBS="-lnetcdf"
-export MPI_FC_LIB="$(mpif90 -show | read compiler options - ; echo $options)"
+export MPI_FC_LIB="$(read compiler options < <(mpif90 -show) ; echo $options)"
 
 ./landveg-compile-taito.ksh
 ```
