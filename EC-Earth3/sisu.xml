@@ -1,0 +1,119 @@
+    <Platform name="sisu">
+        <Description>
+            HOST:        Sisu (sisu.csc.fi)
+            ARCH:        linux_x86_64
+            CPU MODEL:   
+            MAINTAINER:  
+        </Description>
+
+        <Translation name="SISU_CFG">
+            <Description>Platform dependent configuration (sisu.csc.fi)</Description>
+            <Template>platform/sisu.cfg.tmpl</Template>
+            <Target>ecconf.cfg</Target>
+            <Properties></Properties>
+        </Translation>
+
+        <Parameter name="BUILD_ARCH">
+            <Description>Architecture used when building EC-Earth</Description>
+            <Type>STRING</Type>
+            <Value>ecconf</Value>
+        </Parameter>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for TM5 setup files</Description>
+            <Type>PATH</Type>
+            <Value>/wrk/jpkeskin/ece-trunk-r5801</Value>
+        </Parameter>
+
+        <Parameter name="RUN_DIR">
+            <Description>EC-Earth run directory</Description>
+            <Type>PATH</Type>
+            <Value>/wrk/jpkeskin/ece-trunk-r5801/classic/${exp_name}</Value>
+        </Parameter>
+
+        <Parameter name="INI_DATA_DIR">
+            <Description>Initial data directory used by EC-Earth</Description>
+            <Type>PATH</Type>
+            <Value>/proj/atm/EC-Earth/input-trunk-r5801</Value>
+        </Parameter>
+
+        <Parameter name="PROC_PER_NODE">
+            <Description>Number of processors per node</Description>
+            <Type>INTEGER</Type>
+            <Value>24</Value>
+        </Parameter>
+
+        <Parameter name="RESUBMIT_JOB">
+            <Description>Automatically resubmit the job? [true|false]</Description>
+            <Type>BOOLEAN</Type>
+            <Value>false</Value>
+        </Parameter>
+
+        <Parameter name="RESUBMIT_OPT">
+            <Description>Additional options for the submit command</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_DEFINITION_PATH">
+            <Description>GRIBEX definition Template path</Description>
+            <Type>PATH</Type>
+            <Value>/appl/climate/gribex/nonCrayOriginalF2C/INTEL/15.0/lib/gribtemplates</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/appl/climate/grib_api/1.17.0/INTEL/15.0</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BIN_SUBDIR">
+            <Description>GRIB API bin directory relative to the base directory</Description>
+            <Type>PATH</Type>
+            <Value>bin</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_DEFINITION_SUBDIR">
+            <Description>GRIB API definition directory relative to the base directory</Description>
+            <Type>PATH</Type>
+            <Value>share/grib_api/definitions</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_SAMPLES_SUBDIR">
+            <Description>GRIB API samples directory relative to the base directory</Description>
+            <Type>STRING</Type>
+            <Value>share/grib_api/ifs_samples/grib1</Value>
+        </Parameter>
+
+        <Parameter name="ADD_TO_LD_LIBRARY_PATH">
+            <Description>Additional shared library paths needed at runtime</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="PRE_LOAD_MODULES_CMD">
+            <Description>Command run before any modules are loaded</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MODULE_LIST">
+            <Description>List of modules to load</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="WALLTIME">
+            <Description>Maximum runtime requested from the batch system (hh:mm:ss)</Description>
+            <Type>STRING</Type>
+            <Value>00:00:10</Value>
+        </Parameter>
+
+        <Parameter name="RUN_COMPONENTS">
+            <Description>Components that will be used in the run</Description>
+            <Type>STRING</Type>
+            <Value>ifs nemo lim3 rnfmapper xios:detached oasis tm5:chem,o3,ch4,aero</Value>
+        </Parameter>
+
+    </Platform>
+
