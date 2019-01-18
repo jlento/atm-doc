@@ -79,8 +79,10 @@ updatesources () {
 }
 
 ecconfig () {
-    cd ${BLDROOT}/${TAG}/sources    
+    cd ${BLDROOT}/${TAG}/sources   
+    rm -f platform/csc-sisu-cray-intel.xml
     expand-variables ${thisdir}/csc-sisu-cray-intel.xml platform/csc-sisu-cray-intel.xml
+    rm -f config-build.xml
     expand-variables ${thisdir}/config-build.xml config-build.xml
     ./util/ec-conf/ec-conf --platform=csc-sisu-cray-intel config-build.xml
 }
