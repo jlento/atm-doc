@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=jukka-pekka.keskinen}
+: ${SVNUSER:=}
 : ${TAG:=3.2.3}
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
