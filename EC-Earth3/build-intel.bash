@@ -33,7 +33,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 
 ### Local/user defaults ###
 
-: ${SVNUSER:=}
+: ${SVNUSER:=jukka-pekka.keskinen}
 : ${TAG:=3.2.3}
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=$USERAPPL/ece3}
@@ -54,11 +54,7 @@ module load cray-netcdf-hdf5parallel udunits hdf grib_api/1.17.0 gribex svn
 expand-variables () {
     local infile="$1"
     local outfile="$2"
-    local tmpfile="$(mktemp)"
-    eval 'echo "'"$(sed 's/\\/\\\\/g;s/\"/\\\"/g' $infile)"'"' > "$tmpfile"
-    if ! diff -s "$outfile" "$tmpfile" &> /dev/null; then
-	VERSION_CONTROL=t \cp -f --backup "$tmpfile" "$outfile"
-    fi
+    eval 'echo "'"$(sed 's/\\/\\\\/g;s/\"/\\\"/g' $infile)"'"' > "$outfile"
 }
 
 
