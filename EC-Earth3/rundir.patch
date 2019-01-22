@@ -1,6 +1,6 @@
 --- Change the locations of the binaries.
 +++ classic/ece-esm.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
-@@ -97,7 +97,7 @@
+@@ -138,7 +138,7 @@
  
  ifs_numproc=[[[MOD:IFS:NUMPROC]]]
  
@@ -9,7 +9,7 @@
  
  ifs_lastout=false
  
-@@ -155,7 +155,7 @@
+@@ -221,7 +221,7 @@
  
  nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
  
@@ -18,7 +18,7 @@
  
  nem_numproc=[[[MOD:NEM:NUMPROC]]]
  
-@@ -163,7 +163,7 @@
+@@ -229,7 +229,7 @@
  # *** Runoff mapper configuration
  # -----------------------------------------------------------------------------
  
@@ -27,7 +27,7 @@
  rnf_numproc=1
  
  # -----------------------------------------------------------------------------
-@@ -187,7 +187,7 @@
+@@ -253,7 +253,7 @@
  # *** AMIP-reader configuration
  # -----------------------------------------------------------------------------
  
@@ -36,8 +36,8 @@
  amip_numproc=1
  
  # -----------------------------------------------------------------------------
-@@ -211,8 +211,8 @@
- export tm5_exch_nlevs=34
+@@ -280,8 +280,8 @@
+ export tm5_exch_nlevs_cutoff=23
  
  # executable
 -has_config tm5:co2  && tm5_exe_file=${ecearth_src_dir}/tm5mp/build-co2/appl-tm5-co2.x
@@ -47,7 +47,7 @@
  
  # fields sent back to IFS
  has_config tm5:o3   && tm5_to_ifs=O3 || tm5_to_ifs=
-@@ -260,7 +260,7 @@
+@@ -330,7 +330,7 @@
  # *** XIOS configuration
  # -----------------------------------------------------------------------------
  
@@ -58,7 +58,7 @@
  
 --- Change the locations of the binaries.
 +++ classic/ece-ifs+nemo.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
-@@ -78,7 +78,7 @@
+@@ -89,7 +89,7 @@
  
  ifs_numproc=[[[MOD:IFS:NUMPROC]]]
  
@@ -67,7 +67,7 @@
  
  ifs_lastout=false
  
-@@ -136,7 +136,7 @@
+@@ -172,7 +172,7 @@
  
  nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
  
@@ -76,7 +76,7 @@
  
  nem_numproc=[[[MOD:NEM:NUMPROC]]]
  
-@@ -144,7 +144,7 @@
+@@ -180,7 +180,7 @@
  # *** Runoff mapper configuration
  # -----------------------------------------------------------------------------
  
@@ -85,7 +85,7 @@
  rnf_numproc=1
  
  # -----------------------------------------------------------------------------
-@@ -171,7 +171,7 @@
+@@ -207,7 +207,7 @@
  # *** XIOS configuration
  # -----------------------------------------------------------------------------
  
@@ -96,7 +96,7 @@
  
 --- Change the locations of the binaries.
 +++ classic/ece-ifs.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
-@@ -79,7 +79,7 @@
+@@ -90,7 +90,7 @@
  
  ifs_numproc=[[[MOD:IFS:NUMPROC]]]
  
@@ -105,7 +105,7 @@
  
  ifs_lastout=false
  
-@@ -126,7 +126,7 @@
+@@ -165,7 +165,7 @@
  # *** AMIP-reader configuration
  # -----------------------------------------------------------------------------
  
@@ -116,16 +116,16 @@
  # -----------------------------------------------------------------------------
 --- Change the locations of the binaries.
 +++ classic/ece-nemo.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
-@@ -76,7 +76,7 @@
- && nem_config_name=${nem_grid}_LIM3_PISCES_standalone \
- || nem_config_name=${nem_grid}_LIM3_standalone
+@@ -87,7 +87,7 @@
+ has_config pisces         && nem_config_name=${nem_grid}_LIM3_PISCES_standalone
+ has_config pisces:offline && nem_config_name=${nem_grid}_OFF_PISCES
  
 -nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_config_name}/BLD/bin/nemo.exe
 +nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
  
  nem_numproc=[[[MOD:NEM:NUMPROC]]]
  
-@@ -84,7 +84,7 @@
+@@ -95,7 +95,7 @@
  # *** XIOS configuration
  # -----------------------------------------------------------------------------
  
@@ -150,7 +150,7 @@
  
  # minimum sanity
  has_config amip nemo && error "Cannot have both nemo and amip in config!!"
-@@ -97,7 +97,7 @@
+@@ -138,7 +138,7 @@
  
  ifs_numproc=[[[MOD:IFS:NUMPROC]]]
  
@@ -159,7 +159,7 @@
  
  ifs_lastout=false
  
-@@ -155,7 +155,7 @@
+@@ -221,7 +221,7 @@
  
  nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
  
@@ -167,8 +167,8 @@
 +nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
  
  nem_numproc=[[[MOD:NEM:NUMPROC]]]
- 
-@@ -163,14 +163,13 @@
+
+@@ -229,14 +229,13 @@
  # *** Runoff mapper configuration
  # -----------------------------------------------------------------------------
  
@@ -184,7 +184,7 @@
  lpjg_numproc=[[[MOD:LPJG:NUMPROC]]]
  lpjg_cmip5_rcp=[[[MOD:LPJG:CMIP5_RCP]]]
  
-@@ -187,7 +186,7 @@
+@@ -253,7 +252,7 @@
  # *** AMIP-reader configuration
  # -----------------------------------------------------------------------------
  
@@ -193,8 +193,8 @@
  amip_numproc=1
  
  # -----------------------------------------------------------------------------
-@@ -211,8 +210,8 @@
- export tm5_exch_nlevs=34
+@@ -280,8 +279,8 @@
+ export tm5_exch_nlevs_cutoff=23
  
  # executable
 -has_config tm5:co2  && tm5_exe_file=${ecearth_src_dir}/tm5mp/build-co2/appl-tm5-co2.x
@@ -204,7 +204,7 @@
  
  # fields sent back to IFS
  has_config tm5:o3   && tm5_to_ifs=O3 || tm5_to_ifs=
-@@ -260,7 +259,7 @@
+@@ -330,7 +329,7 @@
  # *** XIOS configuration
  # -----------------------------------------------------------------------------
  
@@ -212,8 +212,8 @@
 +xio_exe_file=THIS_NEEDS_TO_BE_CHANGED/xios_server.exe
  
  xio_numproc=[[[MOD:XIO:NUMPROC]]]
- 
-@@ -568,7 +567,7 @@
+
+@@ -673,7 +672,7 @@
  
          has_config amip && \
              oas_grid_dir=${ini_data_dir}/oasis/AMIP && \
@@ -222,7 +222,7 @@
  
          # Grid definition files
          if $(has_config tm5)
-@@ -647,9 +646,9 @@
+@@ -752,9 +751,9 @@
              done
  
              # -- Merge grid definition files
