@@ -48,6 +48,8 @@ chmod u+x landveg-compile-taito.ksh
 ./landveg-compile-taito.ksh
 ```
 
+One may also need to copy the executables from `src/.libs` to `bin/.libs`...
+
 Good luck!
 
 
