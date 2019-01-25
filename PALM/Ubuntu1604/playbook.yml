@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+
+    - name: System update
+      apt: upgrade=dist update_cache=yes cache_valid_time=3600
+
+    - name: Common tools
+      apt: name={{item}} update_cache=yes cache_valid_time=3600
+      with_items:
+        - synaptic
+        - emacs
+
+    - name: Palm requirements
+      apt: name={{item}} update_cache=yes cache_valid_time=3600
+      with_items:
+        - ksh
+        - subversion
+        - gfortran
+        - libopenmpi-dev
+        - libnetcdf-dev
+        - libnetcdff-dev
