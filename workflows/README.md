@@ -3,7 +3,7 @@
 Some ideas for generating more complex workflows with batch queue systems, SLURM
 as an example.
 
-It's a good idea to "script" a workflow:
+It's a good idea to program, "script", a workflow:
 
 - documents what was done
 - allows easier re-running after all bug fixes and reviewer comments of the
@@ -12,7 +12,7 @@ It's a good idea to "script" a workflow:
 
 Writing a workflow is an art of balance between the time and work you use to
 craft the workflow and the time and work it takes to run it. As always with
-scripting, *short and simple*** is the goal.
+scripting, *short and simple* is the goal.
 
 First, have a look at [taito documentation](https://research.csc.fi/taito-user-guide).
 
@@ -80,7 +80,7 @@ Some jobs need to be run in a given order. These kind of dependencies can be
 given to the SLURM batch queue system using `--dependency` option, so that one
 can submit also sequential jobs all at once. See `man sbatch` for details.
 
-## Testing the workflow
+## Developing the workflow
 
 Do not try to make the final workflow first. It does not work that way. Use
 small test programs and/or test data sets for *quick development cycle* and
