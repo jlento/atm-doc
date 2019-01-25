@@ -1,8 +1,19 @@
-How You can update this documentation
-=====================================
+# How You can update this documentation
 
-Overview
---------
+Instructions on how to propose corrections and add new instructions to this
+repositopry.
+
+## Quick and dirty
+
+Mail to <juha.lento@csc.fi> :)
+
+## Developing this documentation
+
+In case of more involved document development...
+
+Also, these instructions can be used in general with GitHub forks.
+
+### Overview
 
 There will be basically three versions of "atm-doc" repository involved in the process:
 
@@ -19,8 +30,7 @@ this procedure is the standard for all simple git/GitHub based
 software projects.
 
 
-First time
-----------
+### First time
 
 - Get a GitHub account and login, https://github.com
 
@@ -40,8 +50,7 @@ First time
   pull request" button on the page)
 
 
-Second time
------------
+### Second time
 
 - synchronize your fork with the upstream repository before making new
   changes, https://help.github.com/articles/syncing-a-fork
