@@ -174,6 +174,7 @@ if [[ ${jsbach_vers} == jsb3  && \
 fi
 
 make ${make_argument}
+make install
 
 #
 #-- mv executable(s) to the bin directory
