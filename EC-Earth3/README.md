@@ -8,7 +8,7 @@ configuration used for CMIP6 AerChemMIP experiment in Cray XC40, sisu.csc.fi.
 
 Check first the subdirectory with the latest tag number, for example [3.3.0].
 The script `build.sh` should build the tagged version without modifications.
-Read firts the "usage" from the start of the script.
+Read first the "usage" from the start of the script.
 
 [3.3.0]: (3.3.0)
 
