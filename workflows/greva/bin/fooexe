@@ -1,0 +1,5 @@
+#!/bin/bash
+
+touch $1
+sleep 120
+echo "1.0" > fitness
