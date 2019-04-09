@@ -43,11 +43,11 @@ a given parent.
 
 #### bootstrap.sh
 
-`Usage: bash bootstrap STARTFILE WORKDIR POPSIZE`
+`Usage: bash bootstrap.sh STARTFILE WORKDIR POPSIZE`
 
 Run `bootstrap.sh` to generate 0th generation. For example,
 
-    ./bin/bootstrap experiment-b30612.dat $WRKDIR/b30612 6
+    ./bin/bootstrap.sh experiment-b30612/b30612.dat $WRKDIR/b30612 6
 
 #### evolve.sh
 

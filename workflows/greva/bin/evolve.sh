@@ -9,6 +9,9 @@
 
 set -e
 
+#module purge
+#module load gcc intelmpi
+
 BINDIR=/homeappl/home/jlento/github/jlento/atm-doc/workflows/greva/bin
 
 select=${BINDIR}/select
@@ -64,5 +67,5 @@ generate_args () {
 # parallel
 
 for (( parentgen = startgen; parentgen < stopgen; parentgen++ )); do
-    parallel --gnu -j $ntasks $multinodeopts --halt 2 $exewrap $exe $parfile  <<<"$(generate_args ${parentgen})"
+    parallel --gnu -j $ntasks $multinodeopts --halt 2 --env PATH --env LD_LIBRARY_PATH --env PYTHONPATH $exewrap $exe $parfile  <<<"$(generate_args ${parentgen})"
 done

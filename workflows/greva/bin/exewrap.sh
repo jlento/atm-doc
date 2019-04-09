@@ -4,9 +4,6 @@
 #
 # Usage: bash exewrap.sh EXE PARFILE PARENTDIR CHILDDIR
 
-# module purge
-# module load ...
-
 set -e
 
 RUNTIME=413000
