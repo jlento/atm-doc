@@ -34,7 +34,7 @@ is_slurm_batch_job () {
 
 if is_slurm_batch_job; then
     ntasks=$SLURM_NTASKS
-    multinodeopts="--sshloginfile $(generate_pbs_nodefile)"
+    multinodeopts="-M --sshloginfile $(generate_pbs_nodefile)"
 else
     ntasks=${USER_NTASKS:-2}
 fi
