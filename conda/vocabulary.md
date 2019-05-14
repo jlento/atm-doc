@@ -62,12 +62,14 @@ of smaller channels are not actively maintained.
 
 ## Basic guidelines for using Conda
 
+The examples below are from taito.csc.fi cluster. Other than the location of the
+conda install root, the same commands work in other clusters, workstations and
+laptops.
+
 - Simplest way to set up conda is to install it the same way in a cluster as in
   a local workstation or laptop, by running the install program from
   https://docs.conda.io/en/latest/miniconda.html , and following the
   instructions. As conda install root, choose a directory with enough space.
-
-Example (in taito.csc.fi):
 
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -76,8 +78,6 @@ bash Miniconda3-latest-Linux-x86_64.sh -b -p $WRKDIR/DONOTREMOVE/miniconda3
 
 - Usually it is a good idea to use only one environment management system at a
   time, for example, either environment module system or conda.
-
-Example (in taito.csc.fi):
 
 ```
 module purge
@@ -89,15 +89,13 @@ source $WRKDIR/DONOTREMOVE/miniconda3/etc/profile.d/conda.sh
   files that define your environment with the software projects sources in
   GitHub, for example.
 
-Examples (in taito.csc.fi):
-
 ```
 conda env create -f <envname>.yaml
 conda env update -f <envname>.yaml
 ```
 
   
-*c-ide.yaml* example (in taito.csc.fi):
+c-ide.yaml example (in taito.csc.fi):
 
 ```
 name: c-ide
