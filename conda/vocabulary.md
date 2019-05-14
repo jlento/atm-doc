@@ -85,7 +85,7 @@ source $WRKDIR/DONOTREMOVE/miniconda3/etc/profile.d/conda.sh
 ```
 
 - To create and update conda environments, use .yaml files for defining the
-  environment, and 'conda env create|update' commands. You can store the .yaml
+  environment, and `conda env create|update` commands. You can store the .yaml
   files that define your environment with the software projects sources in
   GitHub, for example.
 
