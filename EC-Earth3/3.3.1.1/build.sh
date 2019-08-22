@@ -64,7 +64,7 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 module purge
 module load intel/19.0.4
 module load hpcx-mpi/2.4.0
-module load intel-mpi/2019.0.4
+module load intel-mkl/2019.0.4
 module load hdf/4.2.13
 module load hdf5/1.10.4
 module load netcdf/4.7.0
