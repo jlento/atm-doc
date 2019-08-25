@@ -64,13 +64,13 @@ thisdir=$(readlink -f $(dirname $BASH_SOURCE))
 module purge
 module load intel/19.0.4
 module load hpcx-mpi/2.4.0
-module load intel-mpi/2019.0.4
+module load intel-mkl/2019.0.4
 module load hdf/4.2.13
 module load hdf5/1.10.4
 module load netcdf/4.7.0
 module load netcdf-fortran/4.4.4
 module load eccodes/2.5.0
-
+module load cmake/3.12.3
 
 ### Helper functions ###
 
@@ -156,6 +156,12 @@ runoff-mapper () {
 amip-forcing () {
     cd ${BLDROOT}/${TAG}/sources/amip-forcing/src
     make
+}
+
+lpj-guess () {
+    cd ${BLDROOT}/${TAG}/sources/lpjg/build
+    cmake .. -DCMAKE_Fortran_FLAGS="-I${HPCX_MPI_INSTALL_ROOT}/lib"
+    make # Fails with int <---> MPI_Comm type errors...
 }
 
 # Install
