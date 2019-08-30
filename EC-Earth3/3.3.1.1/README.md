@@ -1,6 +1,6 @@
 # EC-Earth 3.3.1.1 setup notes in puhti.csc.fi
 
-juha.lento @ csc.fi, 2019-08-21 
+juha.lento @ csc.fi, 2019-08-30
 
 
 ## Helper functions
@@ -15,9 +15,10 @@ we get everything working perfectly, just run the whole script.
 Hoping to use eccodes instead of grib-api, see [EC-Earth3 wiki
 page](https://dev.ec-earth.org/projects/ecearth3/wiki/Using_eccodes_library).
 
-Builds go through, except ifs. EC-Earth 3.3.2 should supports
-eccodes in ifs. Either install grib-api or skip this version and wait
-for 3.3.2.
+Builds go through, except ifs and lpj-guess. EC-Earth 3.3.2 should
+supports eccodes in ifs. Either install grib-api or skip this version
+and wait for 3.3.2. LPJ-GUESS has issues with using `int` instead of
+`MPI_Comm` C++ type for MPI communicator handles.
 
 Functions `install_all` and `create_ece_run` are not adapted yet.
 
@@ -39,7 +40,7 @@ $ updatesources
 
 ### Run ec-conf
 
-#### Prepare conda environment for running ec-conf GUI (optional)
+#### Prepare conda environment for Python 2, and running ec-conf GUI
 
 Install miniconda3
 (https://csc-user-guide-dev.rahtiapp.fi/#support/tutorials/conda/) and
@@ -63,4 +64,9 @@ or just create the configuration files with `ecconfig` from
 
 ### Build model components
 
-Run the build functions from [build.sh](build.sh).
+Run the build functions from [build.sh](build.sh), for example
+
+```console
+oasis
+tm5
+```
