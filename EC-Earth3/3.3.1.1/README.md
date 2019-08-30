@@ -15,10 +15,8 @@ we get everything working perfectly, just run the whole script.
 Hoping to use eccodes instead of grib-api, see [EC-Earth3 wiki
 page](https://dev.ec-earth.org/projects/ecearth3/wiki/Using_eccodes_library).
 
-Builds go through, except ifs and lpj-guess. EC-Earth 3.3.2 should
-supports eccodes in ifs. Either install grib-api or skip this version
-and wait for 3.3.2. LPJ-GUESS has issues with using `int` instead of
-`MPI_Comm` C++ type for MPI communicator handles.
+Builds go through, except lpj-guess. LPJ-GUESS has issues with using
+`int` instead of `MPI_Comm` C++ type for MPI communicator handles.
 
 Functions `install_all` and `create_ece_run` are not adapted yet.
 

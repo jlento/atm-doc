@@ -5,7 +5,7 @@
 #
 # puhti.csc.fi, Intel compiler suite
 # jukka-pekka.keskinen@helsinki.fi, juha.lento@csc.fi
-# 2017-09-03, 2017-09-21, 2019-02-27, 2019-08-21
+# 2017-09-03, 2017-09-21, 2019-02-27, 2019-08-30
 
 usage="
 Usage: bash $0
@@ -69,7 +69,7 @@ module load hdf/4.2.13
 module load hdf5/1.10.4
 module load netcdf/4.7.0
 module load netcdf-fortran/4.4.4
-module load eccodes/2.5.0
+module load grib-api/1.24.0
 module load cmake/3.12.3
 
 ### Helper functions ###
