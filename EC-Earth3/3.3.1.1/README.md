@@ -57,15 +57,15 @@ source build.sh
 
 ### Get the source
 
-- find you ec-earth svn username and password. They need to be provided at
-  least the first time the sources are retrieved.
+Find you ec-earth svn username and password. They need to be provided
+at least the first time the sources are retrieved.
 
 ```console
-$ updatesources
+updatesources
 ```
 
-- get the gribex_000370.tar.gz. I have a copy if you cannot find it
-  elsewhere.
+Get the gribex_000370.tar.gz. I have a copy if you cannot find it
+elsewhere.
 
 ### Run ec-conf
 
