@@ -25,6 +25,36 @@ Functions `install_all` and `create_ece_run` are not adapted yet.
 
 ## Step by step
 
+### Clone this repository
+
+```console
+git clone git@github.com:jlento/atm-doc.git
+```
+
+and change to EC-Earth 3.3.1.1 direcrtory
+
+```console
+cd atm-doc/EC-Earth3/3.3.1.1
+```
+
+### Prepare conda environment for Python 2, and running ec-conf GUI
+
+First, install Miniconda3 as given in [Conda best
+practices](https://docs.csc.fi/#support/tutorials/conda/). Second,
+create a conda environment [conda-env.yaml](conda-env.yaml) and
+activate it with
+
+```console
+conda env create -f conda-env.yaml
+conda activate ec-conf
+```
+
+### Import helper functions
+
+```console
+source build.sh
+```
+
 ### Get the source
 
 - find you ec-earth svn username and password. They need to be provided at
@@ -37,21 +67,9 @@ $ updatesources
 - get the gribex_000370.tar.gz. I have a copy if you cannot find it
   elsewhere.
 
-
 ### Run ec-conf
 
-#### Prepare conda environment for Python 2, and running ec-conf GUI
-
-Install miniconda3
-(https://csc-user-guide-dev.rahtiapp.fi/#support/tutorials/conda/) and
-run
-
-```console
-conda env create -f conda-env.yaml
-conda activate ec-conf
-```
-
-#### Check / modify configuration
+### Check / modify configuration
 
 Change to EC-Earth `sources` directory and run the GUI with `--gui` option
 
@@ -59,8 +77,12 @@ Change to EC-Earth `sources` directory and run the GUI with `--gui` option
 util/ec-conf/ec-conf --gui --platform=csc-puhti-intel <THIS_DIR>/config-build.xml
 ```
 
-or just create the configuration files with `ecconfig` from
-[build.sh](build.sh).
+or simply just create the configuration files with `ecconfig` from
+[build.sh](build.sh),
+
+```console
+ecconfig
+```
 
 ### Build model components
 
