@@ -5022,7 +5022,7 @@
         <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
             <Description>GRIB_API libraries (without -l prefix)</Description>
             <Type>STRING</Type>
-            <Value>eccodes_f90 eccodes</Value>
+            <Value>grib_api_f90 grib_api</Value>
         </Parameter>
 
         <Parameter name="GRIBEX_BASE_DIR">

@@ -64,8 +64,6 @@ at least the first time the sources are retrieved.
 updatesources
 ```
 
-Get the gribex_000370.tar.gz. I have a copy if you cannot find it
-elsewhere.
 
 ### Run ec-conf
 

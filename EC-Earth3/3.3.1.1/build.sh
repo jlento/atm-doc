@@ -93,6 +93,7 @@ updatesources () {
     mkdir -p $BLDROOT
     cd $BLDROOT
     svn checkout https://svn.ec-earth.org/ecearth3/tags/$TAG $TAG
+    svn checkout https://svn.ec-earth.org/vendor/gribex/gribex_000370 gribex_000370
 }
 
 ecconfig () {
@@ -122,9 +123,7 @@ nemo () {
 
 oifs () {
     # gribex first
-    cd ${BLDROOT}/${TAG}/sources/ifs-36r4
-    tar xf ${GRIBEX_TAR_GZ}
-    cd gribex_000370
+    cd ${BLDROOT}/gribex_000370
     ./build_library <<EOF
 i
 y
