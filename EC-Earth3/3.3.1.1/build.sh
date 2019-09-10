@@ -67,7 +67,7 @@ module load hpcx-mpi/2.4.0
 module load intel-mkl/2019.0.4
 module load hdf/4.2.13
 module load hdf5/1.10.4
-module load netcdf/4.7.0
+module load netcdf/4.7.0-mpi
 module load netcdf-fortran/4.4.4
 module load grib-api/1.24.0
 module load cmake/3.12.3

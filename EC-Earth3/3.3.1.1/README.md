@@ -37,6 +37,8 @@ cd atm-doc/EC-Earth3/3.3.1.1
 
 ### Prepare conda environment for Python 2, and running ec-conf GUI
 
+This step is optional, if you do not use ec-conf with GUI.
+
 First, install Miniconda3 as given in [Conda best
 practices](https://docs.csc.fi/#support/tutorials/conda/). Second,
 create a conda environment [conda-env.yaml](conda-env.yaml) and
