@@ -206,7 +206,7 @@ create_ece_run () {
 
 if ! ${sourced}; then
     updatesources
-    ( module list -t 2>&1 ) > ${BLDROOT}/${TAG}/modules.log
+    ( module -t list 2>&1 ) > ${BLDROOT}/${TAG}/modules.log
     ( ecconfig       2>&1 ) > ${BLDROOT}/${TAG}/ecconf.log
     ( oasis          2>&1 ) > ${BLDROOT}/${TAG}/oasis.log    &
     wait
