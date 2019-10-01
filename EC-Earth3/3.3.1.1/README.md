@@ -35,20 +35,6 @@ and change to EC-Earth 3.3.1.1 direcrtory
 cd atm-doc/EC-Earth3/3.3.1.1
 ```
 
-### Prepare conda environment for Python 2, and running ec-conf GUI
-
-This step is optional, if you do not use ec-conf with GUI.
-
-First, install Miniconda3 as given in [Conda best
-practices](https://docs.csc.fi/#support/tutorials/conda/). Second,
-create a conda environment [conda-env.yaml](conda-env.yaml) and
-activate it with
-
-```console
-conda env create -f conda-env.yaml
-conda activate ec-conf
-```
-
 ### Import helper functions
 
 ```console
@@ -69,13 +55,7 @@ updatesources
 
 ### Check / modify configuration
 
-Change to EC-Earth `sources` directory and run the GUI with `--gui` option
-
-```console
-util/ec-conf/ec-conf --gui --platform=csc-puhti-intel <THIS_DIR>/config-build.xml
-```
-
-or simply just create the configuration files with `ecconfig` from
+Simply just create the configuration files with `ecconfig` from
 [build.sh](build.sh),
 
 ```console

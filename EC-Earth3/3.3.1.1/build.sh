@@ -39,7 +39,7 @@ log files. Something like
 ### Local/user defaults ###
 
 : ${TAG:=3.3.1.1}
-: ${BLDROOT:=/tmp/$USER/ece3}
+: ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=/projappl/project_$(id -g)/$USER/ece3}
 : ${RUNROOT:=/scratch/project_$(id -g)/$USER/ece3}
 : ${PLATFORM:=csc-puhti-intel}
@@ -67,7 +67,7 @@ module load hpcx-mpi/2.4.0
 module load intel-mkl/2019.0.4
 module load hdf/4.2.13
 module load hdf5/1.10.4
-module load netcdf/4.7.0-mpi
+module load netcdf/4.7.0
 module load netcdf-fortran/4.4.4
 module load grib-api/1.24.0
 module load cmake/3.12.3

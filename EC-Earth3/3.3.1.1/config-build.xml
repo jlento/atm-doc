@@ -4836,7 +4836,7 @@
         <Parameter name="ECEARTH_SRC_DIR">
             <Description>EC-Earth base directory</Description>
             <Type>PATH</Type>
-            <Value>/tmp/${USER}/ece3/3.3.1.1/sources</Value>
+            <Value>${TMPDIR}/ece3/3.3.1.1/sources</Value>
         </Parameter>
 
         <Parameter name="MPI_BASE_DIR">
