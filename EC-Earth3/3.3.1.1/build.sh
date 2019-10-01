@@ -66,7 +66,7 @@ module load intel/19.0.4
 module load hpcx-mpi/2.4.0
 module load intel-mkl/2019.0.4
 module load hdf/4.2.13
-module load hdf5/1.10.4
+module load hdf5/1.10.4-mpi
 module load netcdf/4.7.0
 module load netcdf-fortran/4.4.4
 module load grib-api/1.24.0
@@ -206,7 +206,7 @@ create_ece_run () {
 
 if ! ${sourced}; then
     updatesources
-    ( module list -t 2>&1 ) > ${BLDROOT}/${TAG}/modules.log
+    ( module -t list 2>&1 ) > ${BLDROOT}/${TAG}/modules.log
     ( ecconfig       2>&1 ) > ${BLDROOT}/${TAG}/ecconf.log
     ( oasis          2>&1 ) > ${BLDROOT}/${TAG}/oasis.log    &
     wait
