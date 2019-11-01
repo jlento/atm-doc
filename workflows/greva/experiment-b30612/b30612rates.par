@@ -1,0 +1,15 @@
+THIS IS A FILE WITH EVOLUTIONARY PARAMETERS, READ BY READ_EVAPARAM IN MUTATION.MOD.F90
+3d-2	#IS mutation rate
+1d-1	#magnitude of the IS mutation in % of the original value
+6d-3	#T mutation that changes W: gain (per-gene)
+3.5d-3	#T mutation that changes W: per-interaction prob of enhancer loss
+0d0	#T mutation that changes ww
+2d-3	#T mutation that changes wa
+2d-3	#T mutation that changes kadh
+2d-2	#magnitude of the T mutation in % of the original value
+1d-3	#gene dupdel rate	
+0.d0	#mutation rate to get a new form, or to lose an existing form
+1.0	#scales the height of the hill function for fitness due to morph distance
+2.25	#scales the slope of the hill function for fitness due to morph distance
+"/wrk/vroomans/test/b30612.dattel2" #target morphology
+3292    # nr of nodes

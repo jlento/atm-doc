@@ -1,7 +1,10 @@
 Building software that runs on the login-nodes using conda
 ==========================================================
 
-This documentation is for the [conda](https://conda.io/docs/) software stack "maintainers."
+**THIS DOC IS OUTDATED, BETTER STUFF ON THE WAY**
+
+This documentation is for the [conda](https://conda.io/docs/) software stack
+"maintainers."
 
 
 Installing Miniconda

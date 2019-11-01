@@ -1,0 +1,120 @@
+#!/bin/sh
+
+function configure()
+{
+    # This function should configure all settings/modules needed to
+    # later prepare the EC-Earth run directory and set variables used
+    # in the run script
+
+    # Configure paths for building/running EC-Earth
+    export ecearth_src_dir=[[[PLT:ACTIVE:ECEARTH_SRC_DIR]]]
+    export run_dir=[[[PLT:ACTIVE:RUN_DIR]]]
+    export ini_data_dir=[[[PLT:ACTIVE:INI_DATA_DIR]]]
+
+    # File for standard output.
+    # NOTE: This will be modified for restart jobs!
+    stdout_file=${WRKDIR}/${SLURM_JOB_NAME}.out
+
+    # Resubmit this job for automatic restarts? [true/false]
+    # Also, add options for the resubmit command here.
+    resubmit_job=[[[PLT:ACTIVE:RESUBMIT_JOB]]]
+    resubmit_opt="[[[PLT:ACTIVE:RESUBMIT_OPT]]]"
+
+    # Configure GRIBEX paths
+    export LOCAL_DEFINITION_TEMPLATES=[[[PLT:ACTIVE:GRIBEX_DEFINITION_PATH]]]
+
+    # Configure GRIB API paths
+    export GRIB_DEFINITION_PATH=[[[PLT:ACTIVE:GRIBAPI_BASE_DIR]]]/[[[PLT:ACTIVE:GRIBAPI_DEFINITION_SUBDIR]]]
+    export GRIB_SAMPLES_PATH=[[[PLT:ACTIVE:GRIBAPI_BASE_DIR]]]/[[[PLT:ACTIVE:GRIBAPI_SAMPLES_SUBDIR]]]
+    export GRIB_BIN_PATH=[[[PLT:ACTIVE:GRIBAPI_BASE_DIR]]]/[[[PLT:ACTIVE:GRIBAPI_BIN_SUBDIR]]]
+
+    # Configure number of processors per node
+    # Huom! Mä poistin tämän
+#    proc_per_node=[[[PLT:ACTIVE:PROC_PER_NODE]]]
+
+    # Configure and load modules
+    pre_load_modules_cmd="[[[PLT:ACTIVE:PRE_LOAD_MODULES_CMD]]]"
+    module_list="[[[PLT:ACTIVE:MODULE_LIST]]]"
+
+    if [ -n "${module_list}" ]
+    then
+        set +u
+        if [ -n "${pre_load_modules_cmd}" ]
+        then
+            ${pre_load_modules_cmd}
+        fi
+        for m in "${module_list}"
+        do
+            module add ${m}
+        done
+        set -u
+    fi
+
+    # Location of cdo
+    shopt -s expand_aliases    
+    alias cdo="$USERAPPL/bioconda_env/nctools/bin/cdo"
+
+    # Add directories to the shared library search path
+    if [ -n "[[[PLT:ACTIVE:ADD_TO_LD_LIBRARY_PATH]]]" ]
+    then
+        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}"[[[PLT:ACTIVE:ADD_TO_LD_LIBRARY_PATH]]]"
+    fi
+
+    ulimit -s unlimited
+    
+}
+
+function launch()
+{
+    # This function should launch the execution of a coupled experiment and handle
+    # any configuration that for some reason couldnt go into the configuration
+    # function
+
+    cmd="aprun "
+
+    while (( "$#" ))
+      do
+      nranks=$1
+      executable=./$(basename $2)
+      shift
+      shift
+
+#      cmd+=" -n $nranks -N $proc_per_node $executable "
+# Meitsin muokkaama
+      cmd+=" -n $nranks $executable "
+
+        while (( "$#" )) && [ "$1" != "--" ]
+        do
+            cmd+=" $1"
+            shift
+        done
+        shift || true
+
+        (( "$#" )) && cmd+=" :"
+    done
+
+    echo $cmd
+
+    $cmd
+
+}
+
+
+function finalise()
+{
+    # This function should execute of any post run functionality, e.g.
+    # platform dependent cleaning or a resubmit
+
+    if ${resubmit_job} && [ $(date -d "${leg_end_date}" +%s) -lt $(date -d "${run_end_date}" +%s) ]
+    then
+        info "Resubmitting job for leg $((leg_number+1))"
+        # Submit command
+        cd ${WRKDIR}
+        qsub -j oe -m n                                                                      \
+             -o ${run_dir}/$(basename ${stdout_file}).$(printf %03d $((leg_number+1)))       \
+             ${resubmit_opt}                                                                 \
+             -l mppwidth=$(qstat -f ${SLURM_JOBID} | awk '/Resource_List.mppwidth/{print $3}') \
+             -W depend=afterok:${SLURM_JOBID}                                                  \
+             ./${run_script}
+    fi
+}

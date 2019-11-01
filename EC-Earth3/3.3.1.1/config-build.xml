@@ -1,0 +1,5240 @@
+<?xml version="1.0"?>
+
+<Configuration>
+
+    <Translation name="nemo_arch_ecconf_fcm">
+        <Description>Nemo 3.6 config file</Description>
+        <Template>nemo-3.6/ARCH/arch-ecconf.fcm.tmpl</Template>
+        <Target>nemo-3.6/ARCH/arch-ecconf.fcm</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="xios2_arch_ecconf_fcm">
+        <Description>XIOS2 config file for FCM</Description>
+        <Template>xios-2.5/arch/arch-ecconf.fcm.tmpl</Template>
+        <Target>xios-2.5/arch/arch-ecconf.fcm</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="xios2_arch_ecconf_env">
+        <Description>XIOS2 config file: env</Description>
+        <Template>xios-2.5/arch/arch-ecconf.env.tmpl</Template>
+        <Target>xios-2.5/arch/arch-ecconf.env</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="xios2_arch_ecconf_path">
+        <Description>XIOS2 config file: path</Description>
+        <Template>xios-2.5/arch/arch-ecconf.path.tmpl</Template>
+        <Target>xios-2.5/arch/arch-ecconf.path</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="ifs36r4_makefile_config">
+        <Description>IFS/36r4 makefile configuration</Description>
+        <Template>ifs-36r4/Makefile.d/Makefile.config.ecconf.tmpl</Template>
+        <Target>ifs-36r4/Makefile.d/Makefile.config.ecconf</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="oasis_makefile_config">
+        <Description>OASIS makefile configuration</Description>
+        <Template>oasis3-mct/util/make_dir/Makefile.d/Makefile.config.ecconf.tmpl</Template>
+        <Target>oasis3-mct/util/make_dir/Makefile.d/Makefile.config.ecconf</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="runoff-mapper_makefile">
+        <Description>Runoff-mapper Makefile</Description>
+        <Template>runoff-mapper/src/Makefile.tmpl</Template>
+        <Target>runoff-mapper/src/Makefile</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="amip-forcing_makefile">
+        <Description>AMIP-forcing Makefile</Description>
+        <Template>amip-forcing/src/Makefile.tmpl</Template>
+        <Target>amip-forcing/src/Makefile</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="tm5_rcfile_config">
+        <Description>TM5MP rcfile configuration</Description>
+        <Template>tm5mp/rc/main-config-ecearth3.rc.tmpl</Template>
+        <Target>tm5mp/ecconfig-ecearth3.rc</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="lpjg_cmake_config">
+        <Description>LPJ-Guess configuration for cmake</Description>
+        <Template>lpjg/CMakeLists.txt.tmpl</Template>
+        <Target>lpjg/CMakeLists.txt</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="lpjg-offline_makefile">
+        <Description>LPJ-Guess offline Makefile</Description>
+        <Template>lpjg/offline/Makefile.tmpl</Template>
+        <Target>lpjg/offline/Makefile</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="elpin_makefile_config">
+        <Description>ELPiN makefile configuration</Description>
+        <Template>util/ELPiN/src/Makefiles/makefile.tmpl</Template>
+        <Target>util/ELPiN/Makefile</Target>
+        <Properties></Properties>
+
+    </Translation>
+
+    <Translation name="grib_table_126_install_script">
+        <Description>grib table 126 installation script</Description>
+        <Template>util/grib_table_126/define_table_126.sh.tmpl</Template>
+        <Target>util/grib_table_126/define_table_126.sh</Target>
+        <Properties>executable</Properties>
+
+    </Translation>
+
+    <Platform name="bsc-nord3-intel-intelmpi">
+        <Description>
+            HOST:        mn.bsc.es
+            ARCH:        linux_x86_64
+            CPU MODEL:   Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
+            MAINTAINER:  Julian Rodrigo Berlin [julian.berlin@bsc.es] Pablo Echevarria [pablo.echevarria@bsc.es] Miguel Castrillo [miguel.castrillo@bsc.es]
+            COMPILER:    i-compilers (icc+ifort, ???)
+            MPI:         Intel MPI
+            BLAS/LAPACK: Intel MKL
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${SCRATCH}/${exp_name}/auto-ecearth3/sources/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/INTEL/impi/4.1.3.049</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpiif mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/INTEL/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/NETCDF/4.3.2/INTEL/IMPI</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/GRIB/1.14.0</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/HDF5/1.8.12-mpi/IMPI</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O1 -fp-model precise -xHost -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -fp-model precise -xHost -traceback</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization/debug flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value>with_ecearth_optics</Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="bsc-marenostrum4-intel-intelmpi">
+        <Description>
+            HOST:        mn.bsc.es
+            ARCH:        linux_x86_64
+            CPU MODEL:   2 x Intel Xeon Platinum 8160 CPU with 24 cores each @ 2.10GHz for a total of 48 cores per node
+            MAINTAINER:  Pablo Echevarria pablo.echevarria@bsc.es
+            COMPILER:    i-compilers (icc+ifort, ???)
+            MPI:         Intel MPI
+            BLAS/LAPACK: Intel MKL
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${SCRATCH}/${exp_name}/auto-ecearth3/sources/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/INTEL/2018.4.057/impi/2018.4.274</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpifort mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/INTEL/2018.4.057/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/NETCDF/4.2/INTEL/IMPI</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/GRIB/1.14.0/INTEL/</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/GRIBEX/000370/INTEL</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/apps/HDF5/1.8.19/INTEL/IMPI</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-r8 -O3 -xAVX -mtune=skylake -ip -fp-model precise -traceback -extend-source 132 </Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiicc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O1 -fp-model precise -xAVX -mtune=skylake -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiicc</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -fp-model precise -xAVX -mtune=skylake -traceback </Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C -traditional</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization/debug flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value>with_ecearth_optics</Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="cesga-finisterrae2-intel-intelmpi">
+        <Description>
+             HOST:        ft2.cesga.es
+             ARCH:        linux_x86_64
+             CPU MODEL:   24-core Intel Xeon E5-2680 v3 (Haswell) @ 2.5GHz
+             MAINTAINER:  Joan Lopez de la Franca [joan.lopez@bsc.es]
+             COMPILER:    i-compilers (icc+ifort, 17.0.1)
+             MPI:         Intel MPI
+             BLAS/LAPACK: Intel MKL
+         </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${SCRATCH}/${exp_name}/auto-ecearth3/sources/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cesga/intel/impi/5.1.3.223</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpiif mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cesga/intel/compilers_and_libraries_2016.3.210/linux/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cesga/netcdf-fortran/4.4.3/intel/2016/impi/5.1</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cesga/grib_api/1.14.5/intel/2016</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cesga/hdf5/1.8.16/intel/2016/impi/5.1</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="dmi-hpcdev-intel">
+        <Description>
+            HOST:        hpcdev.dmi.dk
+            ARCH:        linux_x86_64
+            CPU MODEL:   CRAY XC50, 36-core Intel(R) SkyLake  
+            USER:        Shuting Yang (shuting@dmi.dk)
+            COMPILER:    i-compilers (icc+ifort, 18.0.0.128)
+            MPI:         MPICH2
+            BLAS/LAPACK: Intel MKL
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${HOME}/EC-Earth3_dmi/r6211_dmi/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpich</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/netapp/dmisys/swrepo/grib_api/1.14.4-1/INTEL/15.0</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api jasper</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/netapp/research/shuting/Libraries/gribex_000370</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cray/hdf4/1.8.14/INTEL/140</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>cc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O1 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>CC -Wl</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -L/netapp/dmisys/swrepo/jasper/1.900/intel/150/lib</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-O1 -g -traceback -fp-model precise -xHost</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="ecmwf-cca-cray-craympi">
+        <Description>
+            HOST:        cca/ccb at ECMWF
+            ARCH:        linux_x86_64
+            CPU MODEL:   36-core Intel(R) Broadwell
+            USER:        ECMWF
+            COMPILER:    ftn Cray compiler
+            MPI:         Cray MPI
+            BLAS/LAPACK: Cray BLAS
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>/perm/rd/pa1/r2930-3.2beta-MACv2-SP_TM5PIAER/sources/</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cray/netcdf-hdf5parallel/4.3.3.1/cray/83</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HCDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cray/hdf5-parallel/1.8.14/cray/83</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/usr/local/apps/grib_api/1.12.1/CRAY/82</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/usr/local/apps/libemos/000394/CRAY/82</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>emosR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-sreal64 -em -hnoomp -O2</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-ffree</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-ffixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>cc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O3</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-Wl,--as-needed -L/opt/cray/hdf5-parallel/1.8.14/cray/83/lib</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>Fortran preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp -P -CC</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>use_oasis_para</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-DMPICH_SKIP_MPICXX -h msglevel_4 -h zero -h gnu</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-D__NONE__</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-em -sinteger32 -sreal64 -O2 -e0 -eZ -Ktrap=fp -R b</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-L/opt/cray/hdf5/1.8.13/cray/83/lib</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value>-O0</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="ecmwf-cca-intel-mpi">
+        <Description>
+            HOST:        ccb/cca at ECMWF
+            ARCH:        linux_x86_64
+            CPU MODEL:   36-core Intel(R) Broadwell
+            USER:        Philippe Le Sager (sager@knmi.nl)
+            COMPILER:    i-compilers (icc+ifort, 17.0.3)
+            MPI:         MPICH2
+            BLAS/LAPACK: Intel MKL
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${PERM}/ecearth3/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpich</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/intel/composer_xe_2015.1.133/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api jasper</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/usr/local/apps/libemos/000394/INTEL/140</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>emosR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/usr/local/apps/hdf/4.2.10/INTEL/140</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model precise -xHost</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>cc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O1 -g -traceback -fp-model precise -xHost</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -fp-model precise -xHost -L/usr/local/apps/jasper/1.900.1/lib</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (apply to all)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization/debug flags for TM5 (apply to all but few files)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>${ECEARTH_SRC_DIR}/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="fmi-voima-intel">
+        <Description>
+            HOST:        Voima (voima.fmi.fi)
+            ARCH:        linux_x86_64
+            CPU MODEL:   Intel Sandy Bridge (Ivy Bridge?)
+            MAINTAINER:  Declan O'Donnell [declan.odonnell@fmi.fi]
+            COMPILER:    Intel Compilers (icc+ifort)
+            MPI:         Intel MPI
+            BLAS/LAPACK: Cray scilib
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>EC-Earth base directory</Description>
+            <Type>PATH</Type>
+            <Value>/lustre/tmp/odonnell/ec-earth/trunk/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(MPICH_DIR)</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpich mpichf90 fmpich</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(CRAY_LIBSCI_PREFIX_DIR)</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>sci_intel</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory (used for compression in HDF)</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/fmi/szip/2.1.1</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type></Type>
+            <Value>sz</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>Hdf4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/lustre/tmp/odonnell/ec-earth</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>Hdf4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>Hdf4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>Hdf4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>Hdf5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(HDF5_DIR)</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>Hdf5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>Hdf5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>Hdf5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(NETCDF_DIR)</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/lustre/tmp/odonnell/ec-earth</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/lustre/tmp/odonnell/ec-earth</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-craype-verbose -O2 -r8 -g -traceback -xAVX -fp-model strict</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-craype-verbose -O2 -r8 -g -traceback -xAVX -fp-model strict</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>Fortran preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>use_oasis_para</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-fpp</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -r8 -g -traceback -xAVX -fp-model strict</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value>with_ecearth_optics</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>/lustre/tmp/odonnell/ec-earth/trunk/sources/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="knmi-rhino">
+        <Description>
+    HOST:        bxshnr02.knmi.nl
+    ARCH:        linux_x86_64
+    CPU MODEL:   Intel(R) Xeon(R) CPU E5-2650 v4 2.00GHz
+    MAINTAINER:  Philippe Le Sager [sager@knmi.nl]
+    COMPILER:    i-compilers (icc+ifort 17.0.2)
+    MPI:         Intel MPI
+    BLAS/LAPACK: Intel MKL
+  </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>EC-Earth base directory</Description>
+            <Type>PATH</Type>
+            <Value>${HOME}/r4628-ec-conf-includes/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/intel/compilers_and_libraries_2016.4.258/linux/mpi/intel64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpiif mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/intel/compilers_and_libraries_2017.2.174/linux/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory (used for compression in HDF)</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/sager/installed/jpeg-9b</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>Hdf4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/sager/installed/hdf-4.2.13</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>Hdf4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>Hdf4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>Hdf4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>Hdf5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/severijn/installed/hdf5-1.8.18</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>Hdf5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>Hdf5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>Hdf5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/severijn/</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/sager/installed/grib_api-1.12.3</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api grib_api_f90</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home/users/sager/installed/gribex_000370</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -r8 -fp-model precise -xCORE-AVX2</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xCORE-AVX2 -r8 -lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-fpp</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>${ECEARTH_SRC_DIR}/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="nsc-bi-intel-intelmpi">
+        <Description>
+            HOST:        bi.nsc.liu.se
+            ARCH:        linux_x86_64
+            CPU MODEL:   Intel E5-2660
+            MAINTAINER:  Uwe Fladrich [uwe.fladrich@smhi.se]
+            COMPILER:    i-compilers (icc+ifort, 15.0.1.133)
+            MPI:         Intel MPI
+            BLAS/LAPACK: Intel MKL
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${HOME}/Projects/ecearth3/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/intel/impi/5.0.2.044</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpiif mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/intel/composer_xe_2015.1.133/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/netcdf/4.3.2/i1501-impi-5.0.2.044-hdf5-1.8.14</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/grib_api/1.12.3/i1501</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/gribex/000370/i1501</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/apps/hdf5/1.8.14/i1501</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="nsc-tetralith-intel-intelmpi">
+        <Description>
+            HOST:        tetralith.nsc.liu.se
+            ARCH:        linux_x86_64
+            CPU MODEL:   Intel E5-2660
+            MAINTAINER:  Uwe Fladrich [uwe.fladrich@smhi.se]
+            COMPILER:    i-compilers (buildenv-intel/2018-u1.bare)
+            MPI:         Intel MPI
+            BLAS/LAPACK: Intel MKL
+            Modules:     buildenv-intel/2018.u1-bare
+                         netCDF/4.4.1.1-HDF5-1.8.19-nsc1-intel-2018a-eb
+                         HDF5/1.8.19-nsc1-intel-2018a-eb
+                         grib_api/1.24.0-nsc1-intel-2018a-eb
+                         CDO/1.9.2-nsc1-intel-2018a-eb
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${HOME}/Projects/ece-tetralith/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(I_MPI_ROOT)/intel64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpifort mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>$(MKLROOT)</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/sse/manual/netcdf/4.4.1.1/HDF5-1.8.19-nsc1-intel-2018a-eb</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/sse/easybuild/prefix/software/grib_api/1.24.0-intel-2018a-nsc1</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/sse/manual/gribex/000370/intel-2018a-eb</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>HDF4 base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>HDF4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>HDF4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>HDF4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>HDF5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/software/sse/easybuild/prefix/software/HDF5/1.8.19-intel-2018a-nsc1</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiicc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiicc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>Fortran preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-check pointers -check uninit</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-warn declarations -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -fp-model strict -g</Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value>with_ecearth_optics</Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="pdc-beskow-intel-craympi">
+        <Description>
+            HOST:        beskow.pdc.kth.se
+            ARCH:        linux_x86_64
+            CPU MODEL:
+            MAINTAINER:  Hamish Struthers [struthers@nsc.liu.se]
+            COMPILER:    Intel compiler
+            MPI:         Cray MPI
+            BLAS/LAPACK: Cray BLAS
+            NOTE:        Use modules PrgEnv-intel/5.2.56 and cray-hdf5-parallel/1.8.13
+        </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>Base directory for EC-Earth sources</Description>
+            <Type>PATH</Type>
+            <Value>${HOME}/Projects/ecearth3/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cray/netcdf-hdf5parallel/4.3.2/intel/140</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf stdc++</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/cray/hdf5-parallel/1.8.13/intel/140</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>HDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>HDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>HDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/pdc/vol/grib_api/1.12.1-intel</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/pdc/vol/gribex/000370/intel</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xHost -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>cc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -xHost</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>CC</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ftn</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -L/opt/cray/hdf5-parallel/1.8.13/intel/140/lib -lhdf5hl_fortran -lhdf5_fortran -lhdf5_hl -lhdf5</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>Fortran preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="knmi-cartesius">
+        <Description>
+    HOST:        ??
+    ARCH:        ??
+    CPU MODEL:   ??
+    USER:        m.debruine@uu.nl
+    COMPILER:    i-compilers (icc+ifort)
+    MPI:         Intel MPI
+    BLAS/LAPACK: Intel MKL
+  </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>EC-Earth base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home1/bruine/ECEARTH/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/intel/impi/5.0.3.048</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi mpiif mpigi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>/opt/intel/composer_xe_2015.0.090/mkl</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_sequential mkl_core</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory (used for compression in HDF)</Description>
+            <Type>PATH</Type>
+            <Value>/hpc/sw/libjpeg-9a</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value>/hpc/sw/szip-2.1-intel</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>sz</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>Hdf4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/hpc/sw/hdf-4.2.9-intel-seq</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>Hdf4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>Hdf4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>Hdf4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>Hdf5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>/hpc/sw/hdf5-1.8.14-intel-impi-par</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>Hdf5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>Hdf5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>Hdf5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>/hpc/sw/netcdf-fortran-4.4.2-intel-impi</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home1/bruine/apps/installed/gib_api-1.13.1-cmake</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api grib_api_f77 grib_api_f90</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value>/nfs/home1/bruine/apps/installed/gribex</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -g -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -g -traceback</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>mpiifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -g -traceback -L/hpc/sw/hdf5-1.8.14-intel-impi-par/lib</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P </Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132 -fpe0</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>use_oasis_para</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-fpe0</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-fpe0</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-warn declarations -traceback -r8</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value>-O3 -fp-model strict -g</Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value>with_ecearth_optics</Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>$(ECEARTH_SRC_DIR)/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+    <Platform name="csc-puhti-intel">
+        <Description>
+    HOST:        puhti.csc.fi
+    ARCH:        linux_x86_64
+    CPU MODEL:   Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+    MAINTAINER:  Juha Lento [juha.lento@csc.fi]
+    COMPILER:    Intel compilers (icc+ifort 19.0.4)
+    MPI:         Bull MPI (OpenMPI)
+    BLAS/LAPACK: Intel MKL
+  </Description>
+
+        <Parameter name="ECEARTH_SRC_DIR">
+            <Description>EC-Earth base directory</Description>
+            <Type>PATH</Type>
+            <Value>${TMPDIR}/ece3/3.3.1.1/sources</Value>
+        </Parameter>
+
+        <Parameter name="MPI_BASE_DIR">
+            <Description>MPI base directory</Description>
+            <Type>PATH</Type>
+            <Value>${HPCX_MPI_INSTALL_ROOT}</Value>
+        </Parameter>
+
+        <Parameter name="MPI_INC_SUBDIR">
+            <Description>MPI include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIB_SUBDIR">
+            <Description>MPI lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="MPI_LIBS_WITHOUT_L">
+            <Description>MPI libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mpi_usempif08 mpi_usempi_ignore_tkr mpi_mpifh mpi</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_BASE_DIR">
+            <Description>LAPACK base directory</Description>
+            <Type>PATH</Type>
+            <Value>${INTEL_MKL_INSTALL_ROOT}</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIB_SUBDIR">
+            <Description>LAPACK lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib/intel64</Value>
+        </Parameter>
+
+        <Parameter name="LAPACK_LIBS_WITHOUT_L">
+            <Description>LAPACK libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mkl_intel_lp64 mkl_core mkl_sequential</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_BASE_DIR">
+            <Description>JPEG base directory (used for compression in HDF)</Description>
+            <Type>PATH</Type>
+            <Value>/appl/spack/install-tree/intel-19.0.4/libjpeg-turbo-1.5.90-2fgpia</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_INC_SUBDIR">
+            <Description>JPEG include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIB_SUBDIR">
+            <Description>JPEG lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib64</Value>
+        </Parameter>
+
+        <Parameter name="JPEG_LIBS_WITHOUT_L">
+            <Description>JPEG libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>jpeg</Value>
+        </Parameter>
+
+        <Parameter name="SZIP_BASE_DIR">
+            <Description>SZIP base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_INC_SUBDIR">
+            <Description>SZIP include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIB_SUBDIR">
+            <Description>SZIP lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="SZIP_LIBS_WITHOUT_L">
+            <Description>SZIP libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="HDF4_BASE_DIR">
+            <Description>Hdf4 base directory</Description>
+            <Type>PATH</Type>
+            <Value>${HDF_INSTALL_ROOT}</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_INC_SUBDIR">
+            <Description>Hdf4 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIB_SUBDIR">
+            <Description>Hdf4 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF4_LIBS_WITHOUT_L">
+            <Description>Hdf4 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>mfhdf df</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_BASE_DIR">
+            <Description>Hdf5 base directory</Description>
+            <Type>PATH</Type>
+            <Value>${HDF5_INSTALL_ROOT}</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_INC_SUBDIR">
+            <Description>Hdf5 include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIB_SUBDIR">
+            <Description>Hdf5 lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="HDF5_LIBS_WITHOUT_L">
+            <Description>Hdf5 libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_BASE_DIR">
+            <Description>NetCDF base directory</Description>
+            <Type>PATH</Type>
+            <Value>${NETCDF_INSTALL_ROOT}</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_INC_SUBDIR">
+            <Description>NetCDF include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIB_SUBDIR">
+            <Description>NetCDF lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="NETCDF_LIBS_WITHOUT_L">
+            <Description>NetCDF libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>netcdff netcdf hdf5_hl hdf5 z</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_BASE_DIR">
+            <Description>GRIB API base directory</Description>
+            <Type>PATH</Type>
+            <Value>${GRIB_API_INSTALL_DIR}</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_INC_SUBDIR">
+            <Description>GRIB API include directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>include</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIB_SUBDIR">
+            <Description>GRIB API lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value>lib</Value>
+        </Parameter>
+
+        <Parameter name="GRIBAPI_LIBS_WITHOUT_L">
+            <Description>GRIB_API libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>grib_api_f90 grib_api</Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_BASE_DIR">
+            <Description>GRIBEX base directory</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIB_SUBDIR">
+            <Description>GRIBEX lib directory relative to base dir</Description>
+            <Type>PATH</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="GRIBEX_LIBS_WITHOUT_L">
+            <Description>GRIBEX libraries (without -l prefix)</Description>
+            <Type>STRING</Type>
+            <Value>gribexR64</Value>
+        </Parameter>
+
+        <Parameter name="MAKE">
+            <Description>Make command (GNU make >3.81 needed!)</Description>
+            <Type>STRING</Type>
+            <Value>make</Value>
+        </Parameter>
+
+        <Parameter name="FC">
+            <Description>F90 Compiler</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS">
+            <Description>General F90 flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -r8 -fp-model precise -xCORE-AVX512</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FREEFORM">
+            <Description>Allow for free format Fortran</Description>
+            <Type>STRING</Type>
+            <Value>-free</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FIXEDFORM">
+            <Description>Expect fixed Fortran format</Description>
+            <Type>STRING</Type>
+            <Value>-fixed</Value>
+        </Parameter>
+
+        <Parameter name="FFLAGS_FPP_PREFIX">
+            <Description>Fortran preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="CC">
+            <Description>C Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CXX">
+            <Description>C++ Compiler</Description>
+            <Type>STRING</Type>
+            <Value>icc</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS">
+            <Description>General C flags for compiling</Description>
+            <Type>STRING</Type>
+            <Value>-O2</Value>
+        </Parameter>
+
+        <Parameter name="CFLAGS_CPP_PREFIX">
+            <Description>C preprocessor flag prefix</Description>
+            <Type>STRING</Type>
+            <Value>-D</Value>
+        </Parameter>
+
+        <Parameter name="LD">
+            <Description>Linker</Description>
+            <Type>STRING</Type>
+            <Value>ifort</Value>
+        </Parameter>
+
+        <Parameter name="LDFLAGS">
+            <Description>General flags for linking</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -fp-model precise -xCORE-AVX512 -r8 -lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="AR">
+            <Description>Command for building libraries from object files (usually ar)</Description>
+            <Type>STRING</Type>
+            <Value>ar</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>curv</Value>
+        </Parameter>
+
+        <Parameter name="ARFLAGS_EXTRACT">
+            <Description>Flags for library building command (When using ar: include u)</Description>
+            <Type>STRING</Type>
+            <Value>p</Value>
+        </Parameter>
+
+        <Parameter name="CPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>cpp</Value>
+        </Parameter>
+
+        <Parameter name="FPP">
+            <Description>C preprocessor command</Description>
+            <Type>STRING</Type>
+            <Value>fpp</Value>
+        </Parameter>
+
+        <Parameter name="CPPFLAGS">
+            <Description>C preprocessor flags</Description>
+            <Type>STRING</Type>
+            <Value>-P -C</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_FFLAGS">
+            <Description>More F90 flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value>-132</Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_PPDEFS">
+            <Description>More CPP/FPP macros for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="OASIS_ADD_LDFLAGS">
+            <Description>More LD flags for Oasis</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="XIOS_CFLAGS">
+            <Description>CFLAGS flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-ansi -w</Value>
+        </Parameter>
+
+        <Parameter name="XIOS_ADD_LDFLAGS">
+            <Description>More LD flags for XIOS</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_FFLAGS">
+            <Description>More F90 flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-fpp</Value>
+        </Parameter>
+
+        <Parameter name="NEMO_ADD_LDFLAGS">
+            <Description>More LD flags for Nemo</Description>
+            <Type>STRING</Type>
+            <Value>-lstdc++</Value>
+        </Parameter>
+
+        <Parameter name="IFS_PPDEFS">
+            <Description>Preprocessor defs for IFS sources</Description>
+            <Type>STRING</Type>
+            <Value>linux LINUX LITTLE LITTLE_ENDIAN POINTER_64 BLAS</Value>
+        </Parameter>
+
+        <Parameter name="IFSAUX_ADD_FFLAGS">
+            <Description>More F90 flags for ifs/ifsaux</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_DEFAULT_FFLAGS">
+            <Description>Default F90 flags for TM5 (ie without optimization)</Description>
+            <Type>STRING</Type>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost -I${HPCX_MPI_INSTALL_ROOT}/lib</Value>
+        </Parameter>
+
+        <Parameter name="TM5_OPTIM_FFLAGS">
+            <Description>F90 optimization flags for TM5</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_MDEFS_FFLAGS">
+            <Description>Model preprocessor defs. Set to with_ecearth_optics if aerosols feedback will be switch on.</Description>
+            <Type>STRING</Type>
+            <Value></Value>
+        </Parameter>
+
+        <Parameter name="TM5_CO2_ONLY">
+            <Description>Light version of TM5 (True or False)</Description>
+            <Type>STRING</Type>
+            <Value>False</Value>
+        </Parameter>
+
+        <Parameter name="MAKEDEPF90">
+            <Description>F90 dependency generator</Description>
+            <Type>STRING</Type>
+            <Value>${ECEARTH_SRC_DIR}/util/makedepf90/bin/makedepf90</Value>
+        </Parameter>
+
+    </Platform>
+
+</Configuration>

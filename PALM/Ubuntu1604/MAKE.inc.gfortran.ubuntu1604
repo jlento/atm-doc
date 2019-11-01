@@ -1,0 +1,15 @@
+# Contents of this file are included in palm's makefile if the simple install
+# process (palm_simple_install) is used.
+# Please adjust compiling parameters as required for your system.
+
+PROG            := palm 
+F90             := mpif90
+COPT            := -cpp -DMPI_REAL=MPI_DOUBLE_PRECISION -DMPI_2REAL=MPI_2DOUBLE_PRECISION -D__netcdf -D__lc -D__parallel
+F90FLAGS        := -Ofast -fdefault-real-8 -fconvert=little-endian
+LDFLAGS         := -Ofast -fdefault-real-8 -fconvert=little-endian
+
+PKG_CONFIG      := PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 pkg-config
+NETCDF_F90FLAGS != $(PKG_CONFIG) --cflags netcdf-fortran
+NETCDF_LDFLAGS  != $(PKG_CONFIG) --libs netcdf-fortran
+F90FLAGS        += $(NETCDF_F90FLAGS)
+LDFLAGS         += $(NETCDF_LDFLAGS)

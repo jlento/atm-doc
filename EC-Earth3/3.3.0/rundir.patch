@@ -1,0 +1,248 @@
+--- Change the locations of the binaries.
++++ classic/ece-esm.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
+@@ -138,7 +138,7 @@
+ 
+ ifs_numproc=[[[MOD:IFS:NUMPROC]]]
+ 
+-ifs_exe_file=${ecearth_src_dir}/ifs-${ifs_version}/bin/ifsmaster-${build_arch}
++ifs_exe_file=THIS_NEEDS_TO_BE_CHANGED/ifsmaster-ecconf
+ 
+ ifs_lastout=false
+ 
+@@ -221,7 +221,7 @@
+ 
+ nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
+ 
+-nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_grid}_LIM3/BLD/bin/nemo.exe
++nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
+ 
+ nem_numproc=[[[MOD:NEM:NUMPROC]]]
+ 
+@@ -229,7 +229,7 @@
+ # *** Runoff mapper configuration
+ # -----------------------------------------------------------------------------
+ 
+-rnf_exe_file=${ecearth_src_dir}/runoff-mapper/bin/runoff-mapper.exe
++rnf_exe_file=THIS_NEEDS_TO_BE_CHANGED/runoff-mapper.exe
+ rnf_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+@@ -253,7 +253,7 @@
+ # *** AMIP-reader configuration
+ # -----------------------------------------------------------------------------
+ 
+-amip_exe_file=${ecearth_src_dir}/amip-forcing/bin/amip-forcing.exe
++amip_exe_file=THIS_NEEDS_TO_BE_CHANGED/amip-forcing.exe
+ amip_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+@@ -280,8 +280,8 @@
+ export tm5_exch_nlevs_cutoff=23
+ 
+ # executable
+-has_config tm5:co2  && tm5_exe_file=${ecearth_src_dir}/tm5mp/build-co2/appl-tm5-co2.x
+-has_config tm5:chem && tm5_exe_file=${ecearth_src_dir}/tm5mp/build/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
+ 
+ # fields sent back to IFS
+ has_config tm5:o3   && tm5_to_ifs=O3 || tm5_to_ifs=
+@@ -330,7 +330,7 @@
+ # *** XIOS configuration
+ # -----------------------------------------------------------------------------
+ 
+-xio_exe_file=${ecearth_src_dir}/xios-2/bin/xios_server.exe
++xio_exe_file=THIS_NEEDS_TO_BE_CHANGED/xios_server.exe
+ 
+ xio_numproc=[[[MOD:XIO:NUMPROC]]]
+ 
+--- Change the locations of the binaries.
++++ classic/ece-ifs+nemo.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
+@@ -89,7 +89,7 @@
+ 
+ ifs_numproc=[[[MOD:IFS:NUMPROC]]]
+ 
+-ifs_exe_file=${ecearth_src_dir}/ifs-${ifs_version}/bin/ifsmaster-${build_arch}
++ifs_exe_file=THIS_NEEDS_TO_BE_CHANGED/ifsmaster-ecconf
+ 
+ ifs_lastout=false
+ 
+@@ -172,7 +172,7 @@
+ 
+ nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
+ 
+-nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_grid}_LIM3/BLD/bin/nemo.exe
++nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
+ 
+ nem_numproc=[[[MOD:NEM:NUMPROC]]]
+ 
+@@ -180,7 +180,7 @@
+ # *** Runoff mapper configuration
+ # -----------------------------------------------------------------------------
+ 
+-rnf_exe_file=${ecearth_src_dir}/runoff-mapper/bin/runoff-mapper.exe
++rnf_exe_file=THIS_NEEDS_TO_BE_CHANGED/runoff-mapper.exe
+ rnf_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+@@ -207,7 +207,7 @@
+ # *** XIOS configuration
+ # -----------------------------------------------------------------------------
+ 
+-xio_exe_file=${ecearth_src_dir}/xios-2/bin/xios_server.exe
++xio_exe_file=THIS_NEEDS_TO_BE_CHANGED/xios_server.exe
+ 
+ xio_numproc=[[[MOD:XIO:NUMPROC]]]
+ 
+--- Change the locations of the binaries.
++++ classic/ece-ifs.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
+@@ -90,7 +90,7 @@
+ 
+ ifs_numproc=[[[MOD:IFS:NUMPROC]]]
+ 
+-ifs_exe_file=${ecearth_src_dir}/ifs-${ifs_version}/bin/ifsmaster-${build_arch}
++ifs_exe_file=THIS_NEEDS_TO_BE_CHANGED/ifsmaster-ecconf
+ 
+ ifs_lastout=false
+ 
+@@ -165,7 +165,7 @@
+ # *** AMIP-reader configuration
+ # -----------------------------------------------------------------------------
+ 
+-amip_exe_file=${ecearth_src_dir}/amip-forcing/bin/amip-forcing.exe
++amip_exe_file=THIS_NEEDS_TO_BE_CHANGED/amip-forcing.exe
+ amip_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+--- Change the locations of the binaries.
++++ classic/ece-nemo.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
+@@ -87,7 +87,7 @@
+ has_config pisces         && nem_config_name=${nem_grid}_LIM3_PISCES_standalone
+ has_config pisces:offline && nem_config_name=${nem_grid}_OFF_PISCES
+ 
+-nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_config_name}/BLD/bin/nemo.exe
++nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
+ 
+ nem_numproc=[[[MOD:NEM:NUMPROC]]]
+ 
+@@ -95,7 +95,7 @@
+ # *** XIOS configuration
+ # -----------------------------------------------------------------------------
+ 
+-xio_exe_file=${ecearth_src_dir}/xios-2/bin/xios_server.exe
++xio_exe_file=THIS_NEEDS_TO_BE_CHANGED/xios_server.exe
+ 
+ xio_numproc=[[[MOD:XIO:NUMPROC]]]
+ 
+--- Prepare a run script for ifs+nemo+tm5 runs.
++++ classic/ece-ifs+nemo+tm5.sh.tmpl	2017-08-04 16:31:26.000000000 +0300
+@@ -21,11 +21,11 @@
+ #     config="ifs amip tm5:chem,o3,ch4,aero" # "AerChem"        : forced-GCM + TM5
+ #     
+ #     config="ifs nemo lim3 rnfmapper xios:detached oasis"                      # "GCM"     : IFS+NEMO
+-#     config="ifs nemo lim3 rnfmapper xios:detached oasis lpjg:fdbck tm5:co2"   # "C-cycle" : GCM+LPJG+TM5
++#     config="ifs nemo lim3 rnfmapper xios:detached oasis tm5:chem,o3,ch4,aero"   # "C-cycle" : GCM+LPJG+TM5
+ #     config="ifs nemo lim3 rnfmapper xios:detached oasis lpjg:fdbck"           # "Veg"     : GCM+LPJ-Guess
+ #     config="ifs nemo lim3 rnfmapper xios:detached oasis tm5:chem,o3,ch4,aero" # "AerChem" : GCM+TM5
+ 
+-config="ifs nemo lim3 rnfmapper xios:detached oasis lpjg:fdbck tm5:co2"
++config="ifs nemo lim3 rnfmapper xios:detached oasis tm5:chem,o3,ch4,aero"
+ 
+ # minimum sanity
+ has_config amip nemo && error "Cannot have both nemo and amip in config!!"
+@@ -138,7 +138,7 @@
+ 
+ ifs_numproc=[[[MOD:IFS:NUMPROC]]]
+ 
+-ifs_exe_file=${ecearth_src_dir}/ifs-${ifs_version}/bin/ifsmaster-${build_arch}
++ifs_exe_file=THIS_NEEDS_TO_BE_CHANGED/ifsmaster-ecconf
+ 
+ ifs_lastout=false
+ 
+@@ -221,7 +221,7 @@
+ 
+ nem_res_hor=$(echo ${nem_grid} | sed 's:ORCA\([0-9]\+\)L[0-9]\+:\1:')
+ 
+-nem_exe_file=${ecearth_src_dir}/nemo-3.6/CONFIG/${nem_grid}_LIM3/BLD/bin/nemo.exe
++nem_exe_file=THIS_NEEDS_TO_BE_CHANGED/nemo.exe
+ 
+ nem_numproc=[[[MOD:NEM:NUMPROC]]]
+
+@@ -229,14 +229,13 @@
+ # *** Runoff mapper configuration
+ # -----------------------------------------------------------------------------
+ 
+-rnf_exe_file=${ecearth_src_dir}/runoff-mapper/bin/runoff-mapper.exe
++rnf_exe_file=THIS_NEEDS_TO_BE_CHANGED/runoff-mapper.exe
+ rnf_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+ # *** LPJ-GUESS configuration
+ # -----------------------------------------------------------------------------
+ 
+-lpjg_time_step_sec=[[[MOD:LPJG:TIME_STEP_SEC]]]
+ lpjg_numproc=[[[MOD:LPJG:NUMPROC]]]
+ lpjg_cmip5_rcp=[[[MOD:LPJG:CMIP5_RCP]]]
+ 
+@@ -253,7 +252,7 @@
+ # *** AMIP-reader configuration
+ # -----------------------------------------------------------------------------
+ 
+-amip_exe_file=${ecearth_src_dir}/amip-forcing/bin/amip-forcing.exe
++amip_exe_file=THIS_NEEDS_TO_BE_CHANGED/amip-forcing.exe
+ amip_numproc=1
+ 
+ # -----------------------------------------------------------------------------
+@@ -280,8 +279,8 @@
+ export tm5_exch_nlevs_cutoff=23
+ 
+ # executable
+-has_config tm5:co2  && tm5_exe_file=${ecearth_src_dir}/tm5mp/build-co2/appl-tm5-co2.x
+-has_config tm5:chem && tm5_exe_file=${ecearth_src_dir}/tm5mp/build/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
++tm5_exe_file=THIS_NEEDS_TO_BE_CHANGED/appl-tm5.x
+ 
+ # fields sent back to IFS
+ has_config tm5:o3   && tm5_to_ifs=O3 || tm5_to_ifs=
+@@ -330,7 +329,7 @@
+ # *** XIOS configuration
+ # -----------------------------------------------------------------------------
+ 
+-xio_exe_file=${ecearth_src_dir}/xios-2/bin/xios_server.exe
++xio_exe_file=THIS_NEEDS_TO_BE_CHANGED/xios_server.exe
+ 
+ xio_numproc=[[[MOD:XIO:NUMPROC]]]
+
+@@ -673,7 +672,7 @@
+ 
+         has_config amip && \
+             oas_grid_dir=${ini_data_dir}/oasis/AMIP && \
+-            mycp='cdo -f nc copy' # to enforce nc format, needed for 'cdo merge' to work (have nc4c with Primavera files)
++            mycp='THIS_NEEDS_TO_BE_CHANGED/cdo -f nc copy' # to enforce nc format, needed for 'cdo merge' to work (have nc4c with Primavera files)
+ 
+         # Grid definition files
+         if $(has_config tm5)
+@@ -752,9 +751,9 @@
+             done
+ 
+             # -- Merge grid definition files
+-            cdo merge gcm_areas.nc tm5_areas.nc areas.nc
+-            cdo merge gcm_grids.nc tm5_grids.nc grids.nc
+-            cdo merge gcm_masks.nc tm5_masks.nc masks.nc
++            THIS_NEEDS_TO_BE_CHANGED/cdo merge gcm_areas.nc tm5_areas.nc areas.nc
++            THIS_NEEDS_TO_BE_CHANGED/cdo merge gcm_grids.nc tm5_grids.nc grids.nc
++            THIS_NEEDS_TO_BE_CHANGED/cdo merge gcm_masks.nc tm5_masks.nc masks.nc
+         fi
+ 
+     else # i.e. $leg_is_restart == true
+--- Fix a problematic input directory.
++++ classic/ctrl/namelist.ifs.sh	2017-08-04 16:31:26.000000000 +0300
+@@ -35,7 +35,7 @@
+ &NAERAD
+     NRPROMA        = 0,
+     LCMIP6         = ${ifs_cmip6},
+-    CMIP6DATADIR   = "${ini_data_dir}/ifs/cmip6-data/"
++    CMIP6DATADIR   = "${ini_data_dir}/ifs/cmip6-data"
+     LA4xCO2        = ${ifs_A4xCO2},
+     L1PCTCO2       = ${ifs_1PCTCO2},
+     LCMIP5         = ${ifs_cmip5},
