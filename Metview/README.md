@@ -1,6 +1,6 @@
 # Metview 4.6.1
 
-Metview 4.6.1 in a Singularity container.
+Metview 4.6.1 in a Singularity container, in puhti.csc.fi.
 
 2019-11-25, juha.lento@csc.fi
 
