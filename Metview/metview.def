@@ -7,10 +7,6 @@ From: ubuntu:16.04
 
 %environment
     export LC_ALL=C
-    export PATH=/usr/games:$PATH
 
 %runscript
     metview
-
-%labels
-    Author GodloveD
