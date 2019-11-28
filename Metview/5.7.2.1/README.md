@@ -29,7 +29,7 @@ Defining an alias for launching Metview is not a bad idea, for example
 
 ```
 alias metview="\
-srun -t 120 --mem=2G -c 1 -A $DEFAULT_PROJECT --x11=first --pty\
+srun -t 120 --mem=2G -c 1 -A $DEFAULT_PROJECT --x11=first\
   singularity run -H $HOME -B /scratch -B /projappl\
     /appl/soft/phys/metview/5.7.2.1/metview.sif\
 "
