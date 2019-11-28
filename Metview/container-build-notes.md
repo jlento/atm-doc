@@ -1,27 +1,19 @@
-# Interactive shell
+# Building Singularity container in puhti.csc.fi
 
-Everything is better with SSD :)
-
-```
-srun -A project_2001659 -p small --x11=first --pty -t 120 \
-    --mem=4G -c 4 --gres=nvme:500 $SHELL
-```
+2019-11-26, juha.lento@csc.fi
 
 
-# ECMWF Docker container for metview (no GUI ?!?)
+## Interactive shell in compute node
 
-Something like this could almost work...
+Singularity is only in compute nodes. While we are on it, let's grab
+some SSD :)
 
 ```
-unset XDG_RUNTIME_DIR
-TMPDIR=$LOCAL_SCRATCH
-singularity shell -W $LOCAL_SCRATCH -H $HOME docker://ecmwf/jupyter-notebook
+srun -A project_2001659 -c 4 --pty --x11=first -t 120 --gres=nvme:500 --mem=16G $SHELL
 ```
 
-...but maybe not. Just jump ahead.
 
-
-# Building Singularity container with Metview app
+## Configure remote builder
 
 Get remote builder (Sylabs.io) access token, and paste it to
 
@@ -36,42 +28,25 @@ Remotes:
 EOF
 ```
 
-Create container definition file:
+## Build Singularity container with Metview app
+
+The definition file `metview.def` is in this directory.
+
+NOTE: Wait for the build to finish, do not interrupt it, even when
+knowing it will not produce intended container.
 
 ```
-cat > metview.def <<EOF
-BootStrap: library
-From: ubuntu:16.04
+export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
+export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
+unset XDG_RUNTIME_DIR PROMPT_COMMAND
+TMPDIR=$LOCAL_SCRATCH
 
-%post
-    apt-get -y update
-    apt-get -y install metview
-
-%environment
-    export LC_ALL=C
-
-%runscript
-    metview
-EOF
-```
-
-Build container on remote builder:
-
-```
 singularity build --remote $LOCAL_SCRATCH/metview.sif metview.def
 ```
 
-or get it with (you get <library> from https://cloud.sylabs.io/builder )
+Test the container:
 
 ```
-singularity pull <library>
-```
-
-if already built.
-
-Run the container:
-
-```
-singularity shell -H $HOME -B /scratch rb-5ddb5ebdb84987019195021e_latest.sif
+singularity run -W $LOCAL_SCRATCH -H $HOME -B $LOCAL_SCRATCH -B /scratch $LOCAL_SCRATCH/metview.sif
 ```
 

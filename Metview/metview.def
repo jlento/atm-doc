@@ -1,9 +1,9 @@
-BootStrap: library
-From: ubuntu:16.04
+BootStrap: docker
+From: opensuse/leap:15.1
 
 %post
-    apt-get -y update
-    apt-get -y install metview
+    zypper --non-interactive addrepo -G https://download.opensuse.org/repositories/home:SStepke/openSUSE_Leap_15.1/home:SStepke.repo
+    zypper --non-interactive install hostname Metview
 
 %environment
     export LC_ALL=C
