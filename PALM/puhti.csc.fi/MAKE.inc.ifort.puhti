@@ -1,0 +1,7 @@
+rpath_careful_here = -Wl,-rpath=/appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/compiler/lib/intel64_lin -Wl,-rpath=/appl/opt/cluster_studio_xe2019/compilers_and_libraries_2019.4.243/linux/mkl/lib/intel64_lin -Wl,-rpath=/appl/spack/install-tree/gcc-4.8.5/gcc-8.3.0-qzmzn5/lib64 -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/fftw-3.3.8-4rgb6q/lib -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/hdf5-1.10.4-z72kbd/lib -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/hpcx-mpi-2.4.0-keuon4/lib -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/libszip-2.1.1-nxcvwv/lib -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/netcdf-4.7.0-5xwiij/lib -Wl,-rpath=/appl/spack/install-tree/intel-19.0.4/netcdf-fortran-4.4.4-tmvulh/lib -Wl,-rpath=/lib64 -Wl,-rpath=/projappl/project_2000726/rrtmg_hpcxmpi/shared/lib
+
+PROG = palm 
+F90 = mpif90
+COPT = -cpp -D__intel_compiler -D__parallel -DMPI_REAL=MPI_DOUBLE_PRECISION -DMPI_2REAL=MPI_2DOUBLE_PRECISION -D__netcdf -D__netcdf4 -D__netcdf4_parallel -D__fftw -D_rrtmg
+F90FLAGS = -mkl -O2 -xHost -fp-model source -r8 -align all -ftz -fno-alias -no-prec-div -no-prec-sqrt -ip -nbs -convert little_endian -I${NETCDF_FORTRAN_INSTALL_ROOT}/include -I${FFTW_INSTALL_ROOT}/include -I/projappl/project_2000726/palm/include/rrtmg-dynamic 
+LDFLAGS = $(F90FLAGS) -L${NETCDF_FORTRAN_INSTALL_ROOT}/lib -lnetcdff -L${FFTW_INSTALL_ROOT}/lib -lfftw3 -L/projappl/project_2000726/palm/lib -lrrtmg $(rpath_careful_here)
