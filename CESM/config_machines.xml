@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!-- This is an ordered list, not all fields are required, optional fields are noted below. -->
+<config_machines version="2.0">
+<!-- MACH is the name that you will use in machine options -->
+  <machine MACH="puhti">
+
+    <!-- DESC: a text description of the machine, this field is current not used in code-->
+    <DESC>CSC general purpose Linux cluster Puhti, 40 pes/node, batch system is slurm---</DESC>
+
+	<!-- NODENAME_REGEX: a regular expression used to identify this machine
+	  it must work on compute nodes as well as login nodes, use machine option
+	  to create_test or create_newcase if this flag is not available -->
+    <NODENAME_REGEX>*.bullx</NODENAME_REGEX>
+
+    <!-- OS: the operating system of this machine. Passed to cppflags for
+	 compiled programs as -DVALUE  recognized are LINUX, AIX, Darwin, CNL -->
+    <OS>LINUX</OS>
+
+    <!-- PROXY: optional http proxy for access to the internet-->
+    <PROXY></PROXY>
+	<!-- COMPILERS: compilers supported on this machine, comma seperated list, first is default -->
+
+    <COMPILERS>intel,gnu</COMPILERS>
+
+	<!-- MPILIBS: mpilibs supported on this machine, comma seperated list,
+	     first is default, mpi-serial is assumed and not required in this list-->
+    <MPILIBS>openmpi,impi</MPILIBS>
+
+    <!-- PROJECT: A project or account number used for batch jobs
+         This value is used for directory names. If different from
+         actual accounting project id, use CHARGE_ACCOUNT
+	 can be overridden in environment or $HOME/.cime/config -->
+    <PROJECT>project_2002037</PROJECT>
+
+    <!-- CHARGE_ACCOUNT: A project or account number used for batch jobs
+	 This is the actual project used for cost accounting set in
+         the batch script (ex. #PBS -A charge_account). Will default
+         to PROJECT if not set.
+	 can be overridden in environment or $HOME/.cime/config -->
+    <CHARGE_ACCOUNT>project_2002037</CHARGE_ACCOUNT>
+
+    <!-- SAVE_TIMING_DIR: (Acme only) directory for archiving timing output -->
+    <SAVE_TIMING_DIR> </SAVE_TIMING_DIR>
+
+    <!-- SAVE_TIMING_DIR_PROJECTS: (Acme only) projects whose jobs archive timing output -->
+    <SAVE_TIMING_DIR_PROJECTS> </SAVE_TIMING_DIR_PROJECTS>
+
+    <!-- CIME_OUTPUT_ROOT: Base directory for case output,
+	 the case/bld and case/run directories are written below here -->
+    <CIME_OUTPUT_ROOT>/scratch/project_2002037/$USER</CIME_OUTPUT_ROOT>
+
+    <!-- DIN_LOC_ROOT: location of the inputdata data directory
+	 inputdata is downloaded automatically on a case by case basis as
+	 long as the user has write access to this directory.   We recommend that
+	 all cime model users on a system share an inputdata directory
+	 as it can be quite large -->
+    <DIN_LOC_ROOT>/scratch/project_2002037/cesm/inputdata</DIN_LOC_ROOT>
+
+    <!-- DIN_LOC_ROOT_CLMFORC: override of DIN_LOC_ROOT specific to CLM
+	 forcing data -->
+    <DIN_LOC_ROOT_CLMFORC></DIN_LOC_ROOT_CLMFORC>
+
+    <!-- DOUT_S_ROOT: root directory of short term archive files, short term
+      archiving moves model output data out of the run directory, but
+      keeps it on disk-->
+    <DOUT_S_ROOT></DOUT_S_ROOT>
+
+    <!-- BASELINE_ROOT:  Root directory for system test baseline files -->
+    <BASELINE_ROOT>$ENV{CESMDATAROOT}/cesm_baselines</BASELINE_ROOT>
+
+    <!-- CCSM_CPRNC: location of the cprnc tool, compares model output in testing-->
+    <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc.cheyenne</CCSM_CPRNC>
+
+    <!-- GMAKE: gnu compatible make tool, default is 'gmake' -->
+    <GMAKE></GMAKE>
+
+    <!-- GMAKE_J: optional number of threads to pass to the gmake flag -->
+    <GMAKE_J>8</GMAKE_J>
+
+    <!-- BATCH_SYSTEM: batch system used on this machine,
+      supported values are: none, cobalt, lsf, pbs, slurm -->
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+
+    <!-- SUPPORTED_BY: contact information for support for this system
+      this field is not used in code -->
+    <SUPPORTED_BY>servicedesk@csc.fi</SUPPORTED_BY>
+
+    <!-- MAX_TASKS_PER_NODE: maximum number of threads*tasks per
+	 shared memory node on this machine,
+	 should always be >= MAX_MPITASKS_PER_NODE -->
+    <MAX_TASKS_PER_NODE>40</MAX_TASKS_PER_NODE>
+
+    <!-- MAX_MPITASKS_PER_NODE: number of physical PES per shared node on
+	 this machine, in practice the MPI tasks per node will not exceed this value -->
+    <MAX_MPITASKS_PER_NODE>40</MAX_MPITASKS_PER_NODE>
+
+    <!-- PROJECT_REQUIRED: Does this machine require a project to be specified to
+	 the batch system?  See PROJECT above -->
+    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+
+    <!-- mpirun: The mpi exec to start a job on this machine, supported values
+	 are values listed in MPILIBS above, default and mpi-serial -->
+    <mpirun mpilib="default">
+      <!-- name of the exectuable used to launch mpi jobs -->
+      <executable>srun</executable>
+      <!-- arguments to the mpiexec command, the name attribute here is ignored-->
+      <arguments>
+	<arg name="partition">-p fmi</arg>
+      </arguments>
+    </mpirun>
+    <mpirun mpilib="mpi-serial">
+      <executable></executable>
+    </mpirun>
+    <!-- module system: allowed module_system type values are:
+	 module  http://www.tacc.utexas.edu/tacc-projects/mclay/lmod
+	 soft http://www.mcs.anl.gov/hs/software/systems/softenv/softenv-intro.html
+         none
+      -->
+    <module_system type="module">
+      <init_path lang="perl">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/init/perl</init_path>
+      <init_path lang="python">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/init/env_modules_python.py</init_path>
+      <init_path lang="csh">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/init/csh</init_path>
+      <init_path lang="sh">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/init/sh</init_path>
+      <cmd_path lang="perl">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/libexec/lmod perl</cmd_path>
+      <cmd_path lang="python">/appl/spack/install-tree/gcc-4.8.5/lmod-7.8-tf4lqs/lmod/lmod/libexec/lmod python</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <modules>
+	<command name="purge"/>
+	<command name="load">StdEnv</command>
+	<command name="load">netcdf/4.7.0</command>
+	<command name="load">netcdf-fortran</command>
+	<command name="load">parallel-netcdf</command>
+      </modules>
+      <modules compiler="gnu">
+	<command name="load">gnu/9.1.0</command>
+      </modules>
+    </module_system>
+<!-- environment variables, a blank entry will unset a variable -->
+    <environment_variables>
+      <env name="OMP_STACKSIZE">256M</env>
+      <env name="MPI_TYPE_DEPTH">16</env>
+    </environment_variables>
+    <!-- resource settings as defined in https://docs.python.org/2/library/resource.html -->
+    <resource_limits>
+      <resource name="RLIMIT_STACK">-1</resource>
+    </resource_limits>
+  </machine>
+</config_machines>
