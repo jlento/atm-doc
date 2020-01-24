@@ -1,0 +1,12 @@
+BootStrap: docker
+From: opensuse/leap:15.1
+
+%post
+    zypper --non-interactive addrepo -G https://download.opensuse.org/repositories/home:SStepke/openSUSE_Leap_15.1/home:SStepke.repo
+    zypper --non-interactive install hostname tar gzip xorg-x11-fonts Metview 
+
+%environment
+    export LC_ALL=C LD_LIBRARY_PATH=/usr/lib/metview-bundle/lib64
+
+%runscript
+    metview
