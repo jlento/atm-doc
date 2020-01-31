@@ -1,3 +1,13 @@
+
+** Unnecessary **
+
+Simply
+
+    module load bioconda
+
+and follow the documentation there. The effect is the same as with the
+longer story below...
+
 Using Conda in puhti.csc.fi
 ===========================
 
