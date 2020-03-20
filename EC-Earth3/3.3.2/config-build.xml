@@ -123,7 +123,7 @@
         <Parameter name="NLEVS">
             <Description>Number of levels used IN TM5 (34 or 10)</Description>
             <Type>STRING</Type>
-            <Value>10</Value>
+            <Value>34</Value>
         </Parameter>
     </Model>
 

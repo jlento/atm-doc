@@ -165,6 +165,10 @@ lpj-guess () {
     make # Fails with int <---> MPI_Comm type errors...
 }
 
+grib-tables () {
+    cd ${BLDROOT}/${TAG}/sources/util/grib_table_126 
+    bash define_table_126.sh
+}
 ### Execute all functions if this script is not sourced ###
 
 if ! ${sourced}; then
@@ -182,4 +186,5 @@ if ! ${sourced}; then
     ( runoff-mapper  2>&1 ) > ${BLDROOT}/${TAG}/runoff.log &
     wait
     ( amip-forcing   2>&1 ) > ${BLDROOT}/${TAG}/amipf.log &
+    ( grib_tables    2>&1 ) > ${BLDROOT}/${TAG}/grib_tables.log &
 fi
