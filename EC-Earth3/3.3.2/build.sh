@@ -169,6 +169,19 @@ grib-tables () {
     cd ${BLDROOT}/${TAG}/sources/util/grib_table_126 
     bash define_table_126.sh
 }
+
+collect_executables () {
+    cd ${BLDROOT}
+    mkdir ${TAG}-exe
+    cp ${TAG}/sources/xios-2.5/bin/xios_server.exe ${TAG}-exe/
+    cp ${TAG}/sources/tm5mp/build-cb05-ml34/appl-tm5-cb05.x ${TAG}-exe/
+    cp ${TAG}/sources/ifs-36r4/bin/ifsmaster-ecconf ${TAG}-exe/
+    cp ${TAG}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe ${TAG}-exe/
+    cp ${TAG}/sources/runoff-mapper/bin/runoff-mapper.exe ${TAG}-exe/
+    cp ${TAG}/sources/amip-forcing/bin/amip-forcing.exe ${TAG}-exe/
+    echo "Built binaries can now be found from " ${BLDROOT}/${TAG}-exe
+}
+
 ### Execute all functions if this script is not sourced ###
 
 if ! ${sourced}; then
@@ -187,4 +200,6 @@ if ! ${sourced}; then
     wait
     ( amip-forcing   2>&1 ) > ${BLDROOT}/${TAG}/amipf.log &
     ( grib_tables    2>&1 ) > ${BLDROOT}/${TAG}/grib_tables.log &
+    wait
+    collect_executables
 fi
