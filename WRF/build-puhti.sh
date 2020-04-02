@@ -115,18 +115,3 @@ CC_TOOLS            = ' configure.wps
 # Compile and link...
 
 ./compile
-
-
-
-
-
-
-
-
-
-
-
-
-
-COMPRESSION_LIBS    = -L/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w/lib -ljasper -L/appl/spack/install-tree/gcc-9.1.0/libpng-1.6.34-lneo6q/lib -lpng -L/appl/spack/install-tree/gcc-9.1.0/zlib-1.2.11-nq5wt2/lib -lz
-COMPRESSION_INC     = -I/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w/include -I/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w -I/appl/spack/install-tree/gcc-9.1.0/zlib-1.2.11-nq5wt2/include
