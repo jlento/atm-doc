@@ -39,13 +39,14 @@ log files. Something like
 
 ### Local/user defaults ###
 
-: ${TAG:=3.3.2}
+#: ${TAG:=3.3.2}           # TAG can be either a tag or a revision
+export TAG=7586
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=/projappl/project_$(id -g)/$USER/ece3}
 : ${RUNROOT:=/scratch/project_$(id -g)/$USER/ece3}
 : ${PLATFORM:=csc-puhti-atmdoc}
 : ${GRIBEX_TAR_GZ:=${HOME}/gribex_000370.tar.gz}
-# : ${REVNO:=6611}
+
 
 
 ### Some general bash scripting stuff ###
@@ -90,16 +91,19 @@ expand-variables () {
 
 
 updatesources () {
-    [ "$REVNO" ] && local revflag="-r $REVNO"
     mkdir -p $BLDROOT
     cd $BLDROOT
-    svn checkout https://svn.ec-earth.org/ecearth3/tags/$TAG $TAG
+    if [[ "$TAG" == *"."* ]]; then
+	svn checkout https://svn.ec-earth.org/ecearth3/tags/$TAG $TAG
+    else
+	svn checkout -r $TAG https://svn.ec-earth.org/ecearth3/trunk $TAG
+    fi
     svn checkout https://svn.ec-earth.org/vendor/gribex/gribex_000370 gribex_000370
 }
 
 ecconfig () {
     cd ${BLDROOT}/${TAG}/sources
-    cp ${thisdir}//csc-puhti-atmdoc.xml platform/
+    cp ${thisdir}/${PLATFORM}.xml platform/
     ./util/ec-conf/ec-conf --platform=${PLATFORM} ${thisdir}/config-build.xml
 }
 
@@ -144,7 +148,6 @@ EOF
 
 tm5 () {
     cd ${BLDROOT}/${TAG}/sources/tm5mp
-    # patch -u -p0 < $thisdir/tm5.patch
     sed -i 's/\?//g' base/convection.F90
     PATH=${BLDROOT}/${TAG}/sources/util/makedepf90/bin:$PATH ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
 }
@@ -179,6 +182,7 @@ collect_executables () {
     cp ${TAG}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe ${TAG}-exe/
     cp ${TAG}/sources/runoff-mapper/bin/runoff-mapper.exe ${TAG}-exe/
     cp ${TAG}/sources/amip-forcing/bin/amip-forcing.exe ${TAG}-exe/
+    cp -r ${TAG}/sources/util/grib_table_126 ${TAG}-exe/
     echo "Built binaries can now be found from " ${BLDROOT}/${TAG}-exe
 }
 
@@ -199,7 +203,7 @@ if ! ${sourced}; then
     ( runoff-mapper  2>&1 ) > ${BLDROOT}/${TAG}/runoff.log &
     wait
     ( amip-forcing   2>&1 ) > ${BLDROOT}/${TAG}/amipf.log &
-    ( grib_tables    2>&1 ) > ${BLDROOT}/${TAG}/grib_tables.log &
+    ( grib-tables    2>&1 ) > ${BLDROOT}/${TAG}/grib_tables.log &
     wait
     collect_executables
 fi
