@@ -2,6 +2,6 @@ rpath_careful_here = -Wl,-rpath=/appl/opt/cluster_studio_xe2019/compilers_and_li
 
 PROG = palm 
 F90 = mpif90
-COPT = -cpp -D__intel_compiler -D__parallel -DMPI_REAL=MPI_DOUBLE_PRECISION -DMPI_2REAL=MPI_2DOUBLE_PRECISION -D__netcdf -D__netcdf4 -D__netcdf4_parallel -D__fftw
-F90FLAGS = -mkl -O2 -xHost -fp-model source -r8 -align all -ftz -fno-alias -no-prec-div -no-prec-sqrt -ip -nbs -convert little_endian -I${NETCDF_FORTRAN_INSTALL_ROOT}/include -I${FFTW_INSTALL_ROOT}/include
-LDFLAGS = $(F90FLAGS) -L${NETCDF_FORTRAN_INSTALL_ROOT}/lib -lnetcdff -L${FFTW_INSTALL_ROOT}/lib -lfftw3 -L/projappl/project_2000726/palm/lib $(rpath_careful_here)
+COPT = -cpp -D__intel_compiler -D__parallel -DMPI_REAL=MPI_DOUBLE_PRECISION -DMPI_2REAL=MPI_2DOUBLE_PRECISION -D__netcdf -D__netcdf4 -D__netcdf4_parallel -D__fftw -D_rrtmg
+F90FLAGS = -mkl -O2 -xHost -fp-model source -r8 -align all -ftz -fno-alias -no-prec-div -no-prec-sqrt -ip -nbs -convert little_endian -I${NETCDF_FORTRAN_INSTALL_ROOT}/include -I${FFTW_INSTALL_ROOT}/include -I/projappl/project_2000726/palm/include/rrtmg-dynamic 
+LDFLAGS = $(F90FLAGS) -L${NETCDF_FORTRAN_INSTALL_ROOT}/lib -lnetcdff -L${FFTW_INSTALL_ROOT}/lib -lfftw3 -L/projappl/project_2000726/palm/lib -lrrtmg $(rpath_careful_here)

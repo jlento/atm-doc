@@ -1,38 +1,55 @@
 #!/bin/bash
 
-# Install PALM 6.0 with RRTMG
-# 2019-12-13, juha.lento@csc.fi
+# Install PALM 6.0 in puhti.csc.fi
+# 2020-02-27, juha.lento@csc.fi
 
-install_root=$(projappl)/palm
+: ${PROJECT:?Please set PROJECT environment variable}
 
-mkdir -p $install_root/{include/rrtmg-static,include/rrtmg-dynamic,lib}
+puhti_palm_files="https://raw.githubusercontent.com/jlento/atm-doc/master/PALM/puhti.csc.fi"
 
-module purge
-module load intel/19.0.4 hpcx-mpi/2.4.0 intel-mkl/2019.0.4 fftw/3.3.8-mpi hdf5/1.10.4-mpi netcdf/4.7.0 netcdf-fortran/4.4.4 makedepf90
+eval "$(wget -O - $puhti_palm_files/env.sh)"
 
-cd $TMPDIR
-svn checkout --username NNN --password NNN https://palm.muk.uni-hannover.de/svn/palm/trunk palm
+builddir=$TMPDIR
+installdir=/projappl/$PROJECT/palm
 
+svn checkout --username NNN --password NNN https://palm.muk.uni-hannover.de/svn/palm/trunk $builddir/palm
 
-# RRTMG, building production versions. See `install_rrtmg` how to build
-# debug versions.
-
-cd palm/LIB/rrtmg
-makedepf90 *.f90 > deps.mk
-
-make -j 8 -f Makefile_static -f deps.mk F90=mpif90  PROG=librrtmg F90FLAGS="-O2 -cpp -r8 -nbs -convert little_endian -I${NETCDF_FORTRAN_INSTALL_ROOT}/include"
-install -m 660 *.mod $install_root/include/rrtmg-static
-install -m 660 librrtmg.a $install_root/lib
-make -f Makefile_static clean
-
-make -j 8 -f Makefile -f deps.mk F90=mpif90  PROG=librrtmg F90FLAGS="-O2 -cpp -r8 -nbs -convert little_endian -I${NETCDF_FORTRAN_INSTALL_ROOT}/include"
-install -m 660 *.mod $install_root/include/rrtmg-dynamic
-install -m 660 librrtmg.so $install_root/lib
-make -f Makefile clean
+wget -O $builddir/palm/INSTALL/MAKE.inc.ifort.puhti $puhti_palm_files/MAKE.inc.ifort.puhti
 
 
-# PALM
+# Build
 
-cd $TMPDIR/palm
+cd $builddir/palm
 PATH=$PWD/SCRIPTS:$PATH
 palm_simple_build -b ifort.puhti
+
+
+# Install
+
+mkdir -p $installdir/bin
+cp $builddir/BUILD_ifort.puhti/palm $installdir/bin/
+
+
+# Test
+
+cp -r $builddir/palm/TESTS/cases/example_cbl /scratch/$PROJECT/
+cd /scratch/$PROJECT/example_cbl
+ln -s INPUT/example_cbl_p3d PARIN
+srun -A $PROJECT -p test -n 4 $installdir/bin/palm < case_config.yml
+diff -a -y -W $COLUMNS RUN_CONTROL MONITORING/example_cbl_rc | less
+
+
+# The test using a batch file
+
+cat > job.sh <<EOF 
+#!/bin/bash
+#SBATCH -A $PROJECT
+#SBATCH -n 4
+#SBATCH -p test
+
+eval "$(wget -O - $puhti_palm_files/env.sh)"
+cd /scratch/$PROJECT/example_cbl
+srun $installdir/bin/palm < case_config.yml
+EOF
+
+sbatch job.sh
