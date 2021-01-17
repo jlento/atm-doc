@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# puhti.csc.fi
-# juha.lento @ csc.fi, 2020-09-01
+# mahti.csc.fi
+# juha.lento @ csc.fi, 2021-01-17
 
-export install_dir=<editme>
+export install_dir=/projappl/project_2003423/$USER
 
 module load perl fftw openblas hdf5/1.10.6-mpi netcdf-c/4.7.3-mpi netcdf-fortran eccodes
 
@@ -53,6 +53,8 @@ cd $TMPDIR
 tar xvf oifs43r3v1.tar.gz
 cd oifs43r3v1
 
+zlib=$(h5pfc -show | grep -oe '-L[^ ]*zlib[^ ]*/lib')
+
 # Stripped version of oifs-config.editme.sh
 
 export OIFS_HOME=$PWD
@@ -61,7 +63,7 @@ export OIFS_INIDATA_DIR="<editme>"
 export OIFS_LAPACK_INCLUDE="-I${OPENBLAS_INSTALL_ROOT}/include"
 export OIFS_LAPACK_LIB="-lopenblas"
 export OIFS_NETCDF_INCLUDE="-I$NETCDF_FORTRAN_INSTALL_ROOT/include -I$NETCDF_C_INSTALL_ROOT/include"
-export OIFS_NETCDF_LIB="-lnetcdff -lnetcdf -L/appl/spack/v014/install-tree/gcc-9.3.0/zlib-1.2.11-ll4b3c/lib -lz -Wl,-rpath=/appl/spack/v014/install-tree/gcc-9.3.0/zlib-1.2.11-ll4b3c/lib"
+export OIFS_NETCDF_LIB="-lnetcdff -lnetcdf -L$zlib -lz -Wl,-rpath=$zlib"
 export OIFS_GRIB_INCLUDE="-I${ECCODES_INSTALL_ROOT}/include"
 export OIFS_GRIB_LIB="-L${ECCODES_INSTALL_ROOT}/lib -leccodes_f90 -leccodes"
 export OIFS_COMP=gnu
@@ -80,9 +82,7 @@ alias omake="fcm make -v -j16 -f $OIFS_HOME/make/oifs.fcm"
 alias omakenew="fcm make --new -v -j16 -f $OIFS_HOME/make/oifs.fcm"
 alias oenv='env|grep OIFS_'
 
-# Build
-
 omake
 
-
-
+mkdir -p ${install_dir}/bin
+cp -r bin/* make/gnu-opt/oifs/bin/* ${install_dir}/bin
