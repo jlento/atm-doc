@@ -14,7 +14,7 @@ cd $TMPDIR
 svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios-2.5   xios-2.5
 cd xios-2.5
 
-cat > arch/arch-OIFS.env <<EOF
+cat > arch/arch-OIFS.env <<'EOF'
 module load gcc
 module load openmpi
 module load hdf5/1.10.6-mpi
@@ -28,7 +28,7 @@ EOF
 
 cp arch/arch-GCC_LINUX.fcm  arch/arch-OIFS.fcm
 
-cat > arch/arch-OIFS.path <<EOF
+cat > arch/arch-OIFS.path <<'EOF'
 NETCDF_INCDIR="-I$NETCDF_INC_DIR"
 NETCDF_LIBDIR="-L$NETCDF_LIB_DIR"
 NETCDF_LIB="-lnetcdff -lnetcdf"
