@@ -54,11 +54,7 @@ module load cray-netcdf-hdf5parallel udunits hdf grib_api/1.17.0 gribex svn
 expand-variables () {
     local infile="$1"
     local outfile="$2"
-    local tmpfile="$(mktemp)"
-    eval 'echo "'"$(sed 's/\\/\\\\/g;s/\"/\\\"/g' $infile)"'"' > "$tmpfile"
-    if ! diff -s "$outfile" "$tmpfile" &> /dev/null; then
-	VERSION_CONTROL=t \cp -f --backup "$tmpfile" "$outfile"
-    fi
+    eval 'echo "'"$(sed 's/\\/\\\\/g;s/\"/\\\"/g' $infile)"'"' > "$outfile"
 }
 
 
@@ -83,8 +79,10 @@ updatesources () {
 }
 
 ecconfig () {
-    cd ${BLDROOT}/${TAG}/sources    
+    cd ${BLDROOT}/${TAG}/sources   
+    rm -f platform/csc-sisu-cray-intel.xml
     expand-variables ${thisdir}/csc-sisu-cray-intel.xml platform/csc-sisu-cray-intel.xml
+    rm -f config-build.xml
     expand-variables ${thisdir}/config-build.xml config-build.xml
     ./util/ec-conf/ec-conf --platform=csc-sisu-cray-intel config-build.xml
 }

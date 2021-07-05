@@ -4842,25 +4842,25 @@
         <Parameter name="MPI_BASE_DIR">
             <Description>MPI base directory</Description>
             <Type>PATH</Type>
-            <Value>${HPCX_MPI_INSTALL_ROOT}</Value>
+            <Value>${INTEL_MPI_INSTALL_ROOT}</Value>
         </Parameter>
 
         <Parameter name="MPI_INC_SUBDIR">
             <Description>MPI include directory relative to base dir</Description>
             <Type>PATH</Type>
-            <Value>include</Value>
+            <Value>include64</Value>
         </Parameter>
 
         <Parameter name="MPI_LIB_SUBDIR">
             <Description>MPI lib directory relative to base dir</Description>
             <Type>PATH</Type>
-            <Value>lib</Value>
+            <Value>lib64</Value>
         </Parameter>
 
         <Parameter name="MPI_LIBS_WITHOUT_L">
             <Description>MPI libraries (without -l prefix)</Description>
             <Type>STRING</Type>
-            <Value>mpi_usempif08 mpi_usempi_ignore_tkr mpi_mpifh mpi</Value>
+            <Value>mpi</Value>
         </Parameter>
 
         <Parameter name="LAPACK_BASE_DIR">
@@ -4884,7 +4884,7 @@
         <Parameter name="JPEG_BASE_DIR">
             <Description>JPEG base directory (used for compression in HDF)</Description>
             <Type>PATH</Type>
-            <Value>/appl/spack/install-tree/intel-19.0.4/libjpeg-turbo-1.5.90-2fgpia</Value>
+            <Value>/appl/spack/install-tree/intel-18.0.5/libjpeg-turbo-1.5.90-3pwbcw</Value>
         </Parameter>
 
         <Parameter name="JPEG_INC_SUBDIR">
@@ -5052,7 +5052,7 @@
         <Parameter name="FC">
             <Description>F90 Compiler</Description>
             <Type>STRING</Type>
-            <Value>ifort</Value>
+            <Value>mpiifort</Value>
         </Parameter>
 
         <Parameter name="FFLAGS">
@@ -5082,13 +5082,13 @@
         <Parameter name="CC">
             <Description>C Compiler</Description>
             <Type>STRING</Type>
-            <Value>icc</Value>
+            <Value>mpicc</Value>
         </Parameter>
 
         <Parameter name="CXX">
             <Description>C++ Compiler</Description>
             <Type>STRING</Type>
-            <Value>icc</Value>
+            <Value>mpicxx</Value>
         </Parameter>
 
         <Parameter name="CFLAGS">
@@ -5106,7 +5106,7 @@
         <Parameter name="LD">
             <Description>Linker</Description>
             <Type>STRING</Type>
-            <Value>ifort</Value>
+            <Value>mpiifort</Value>
         </Parameter>
 
         <Parameter name="LDFLAGS">
@@ -5208,7 +5208,7 @@
         <Parameter name="TM5_DEFAULT_FFLAGS">
             <Description>Default F90 flags for TM5 (ie without optimization)</Description>
             <Type>STRING</Type>
-            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost -I${HPCX_MPI_INSTALL_ROOT}/lib</Value>
+            <Value>-O2 -g -traceback -r8 -fp-model strict -fp-model source -xHost -I${INTEL_MPI_INSTALL_ROOT}/lib</Value>
         </Parameter>
 
         <Parameter name="TM5_OPTIM_FFLAGS">
