@@ -2,10 +2,11 @@
 
 # mahti.csc.fi
 # juha.lento @ csc.fi, 2021-01-17
+# juha.lento @ csc.fi, 2021-05-23
 
 export install_dir=/projappl/project_2003423/$USER
 
-module load perl fftw openblas hdf5/1.10.6-mpi netcdf-c/4.7.3-mpi netcdf-fortran eccodes
+module load fftw openblas hdf5/1.10.7-mpi netcdf-c netcdf-fortran eccodes
 
 
 # XIOS
@@ -17,8 +18,8 @@ cd xios-2.5
 cat > arch/arch-OIFS.env <<'EOF'
 module load gcc
 module load openmpi
-module load hdf5/1.10.6-mpi
-module load netcdf-c/4.7.3-mpi
+module load hdf5/1.10.7-mpi
+module load netcdf-c/4.8.1
 module load netcdf-fortran
 export HDF5_INC_DIR=$HDF5_INSTALL_ROOT/include
 export HDF5_LIB_DIR=$HDF5_INSTALL_ROOT/lib
