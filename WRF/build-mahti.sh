@@ -39,6 +39,12 @@ cd $WRF_INSTALL_ROOT
 git clone https://github.com/wrf-model/WRF
 cd WRF
 
+# If you want WRF to output grib2
+
+module load jasper
+export JASPERINC=$JASPER_INSTALL_ROOT/include
+export JASPERLIB=$JASPER_INSTALL_ROOT/lib
+sed -ir 's/(I_really_want_to_output_grib2_from_WRF = )(.*)/\1"TRUE" ;/p' arch/Config.pl
 
 # Configure
 
@@ -69,11 +75,6 @@ srun wrf.exe
 EOF
 
 
-##############################################
-# NOTE: The instructions below for WPS build #
-# are not updated from puhti -> mahti        #
-##############################################
-
 # Download WPS
 
 git clone https://github.com/wrf-model/WPS
@@ -82,36 +83,7 @@ cd WPS
 
 # Configure (using the same modules and NETCDF as above)
 
-./configure <<<19
-
-
-# Edit configure.wps (overwritten everytime ./configure is run)
-# - give the locations of jasper, png and zlib (using gcc/9.1.0, hoping it's C only and
-#   actually works...)
-# - add option -mkl to all FLAGS
-
-sed -i '60,79c\
-COMPRESSION_LIBS    = -L/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w/lib64 -ljasper -L/appl/spack/install-tree/gcc-9.1.0/libpng-1.6.34-lneo6q/lib -lpng -L/appl/spack/install-tree/gcc-9.1.0/zlib-1.2.11-nq5wt2/lib -lz\
-COMPRESSION_INC     = -I/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w/include -I/appl/spack/install-tree/gcc-9.1.0/jasper-2.0.14-cbgw7w/include -I/appl/spack/install-tree/gcc-9.1.0/zlib-1.2.11-nq5wt2/include\
-FDEFS               = -DUSE_JPEG2000 -DUSE_PNG\
-SFC                 = ifort\
-SCC                 = icc\
-DM_FC               = mpif90\
-DM_CC               = mpicc\
-FC                  = $(DM_FC)\
-CC                  = $(DM_CC)\
-LD                  = $(FC)\
-FFLAGS              = -FR -convert big_endian -mkl\
-F77FLAGS            = -FI -convert big_endian -mkl\
-FCSUFFIX            = \
-FNGFLAGS            = $(FFLAGS)\
-LDFLAGS             = -mkl\
-CFLAGS              = -w -mkl\
-CPP                 = /lib/cpp -P -traditional\
-CPPFLAGS            = -D_UNDERSCORE -DBYTESWAP -DLINUX -DIO_NETCDF -DIO_BINARY -DIO_GRIB1 -DBIT32 -D_MPI\
-ARFLAGS             = \
-CC_TOOLS            = ' configure.wps
-
+./configure <<<3
 
 # Compile and link...
 
