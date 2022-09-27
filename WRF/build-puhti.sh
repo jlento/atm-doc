@@ -1,27 +1,26 @@
 #!/bin/bash
 
 # Build WRF and WPS puhti.csc.fi
-# 2020-04-02, Added WPS instructions, juha.lento@csc.fi 
+# 2020-09-27, Updated for Puhti RHEL8, Intel -> GNU compilers, juha.lento@csc.fi
+# 2020-04-02, Added WPS instructions, juha.lento@csc.fi
 # 2019-11-25, juha.lento@csc.fi
 
 
 # Environment
 
-modules="intel/19.0.4 hpcx-mpi/2.4.0 intel-mkl/2019.0.4 hdf5/1.10.4-mpi\
- netcdf/4.7.0 netcdf-fortran/4.4.4"
+modules="gcc/11.3.0 openmpi/4.1.4 intel-oneapi-mkl/2022.1.0 hdf5/1.12.2-mpi netcdf-c/4.8.1 netcdf-fortran/4.5.4"
 
 module purge
 module load $modules
-export NETCDF=/appl/soft/phys/WRF/4.1.2
+export NETCDF=$PWD/netcdf
 
 
 # Create netcdf + netcdf-fortran Spack view
 #   - no need to redo this if it already exist
 
 mkdir -p $NETCDF
-cd $NETCDF
-source /appl/spack/spack/share/spack/setup-env.sh
-spack view -d no add . /5xwiij /tmvulh
+source /appl/spack/v018/spack/share/spack/setup-env.sh
+spack view -d no add $NETCDF /${NETCDF_C_INSTALL_ROOT##*-} /${NETCDF_FORTRAN_INSTALL_ROOT##*-}
 
 
 # Set WRF build directory
@@ -32,21 +31,15 @@ WRF_INSTALL_ROOT=${LOCAL_SCRATCH:-$TMPDIR}
 cd $WRF_INSTALL_ROOT
 
 
-# Download source from tar ball, or...
+# Download source from github
 
-wget https://github.com/wrf-model/WRF/archive/v4.1.2.tar.gz
-tar xvf v4.1.2.tar.gz
-cd WRF-4.1.2
-
-# ...or download the latest from github
-
-git clone https://github.com/wrf-model/WRF
+git clone --recurse-submodules https://github.com/wrf-model/WRF
 cd WRF
 
 
 # Configure
 
-./configure <<<"67
+./configure <<<"35
 
 "
 
