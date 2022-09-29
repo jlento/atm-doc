@@ -41,14 +41,14 @@ cd WRF
 
 # If you want WRF to output grib2
 
-module load jasper
-export JASPERINC=$JASPER_INSTALL_ROOT/include
-export JASPERLIB=$JASPER_INSTALL_ROOT/lib
-sed -ir 's/(I_really_want_to_output_grib2_from_WRF = )(.*)/\1"TRUE" ;/p' arch/Config.pl
+# module load jasper
+# export JASPERINC=$JASPER_INSTALL_ROOT/include
+# export JASPERLIB=$JASPER_INSTALL_ROOT/lib
+# sed -ir 's/(I_really_want_to_output_grib2_from_WRF = )(.*)/\1"TRUE" ;/p' arch/Config.pl
 
 # Configure
 
-./configure <<<"35
+./configure <<<"34
 
 "
 
