@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build WRF and WPS puhti.csc.fi
-# 2020-09-27, Updated for Puhti RHEL8, Intel -> GNU compilers, juha.lento@csc.fi
+# 2020-09-29, Updated for Puhti RHEL8, Intel -> GNU compilers, juha.lento@csc.fi
 # 2020-04-02, Added WPS instructions, juha.lento@csc.fi
 # 2019-11-25, juha.lento@csc.fi
 
@@ -38,7 +38,7 @@ cd WRF
 
 # Configure
 
-./configure <<<"35
+./configure <<<"34
 
 "
 
