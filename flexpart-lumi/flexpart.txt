@@ -3,10 +3,10 @@ export EBU_USER_PREFIX=/project/project_462000007/jlento/Easybuild
 module load LUMI/22.08
 module load partition/C
 module load EasyBuild-user
-module load ecCodes
 module load cray-netcdf
 
 eb -r . ecCodes-2.26.0-cpeGNU-22.08.eb
+module load ecCodes
 
 tar xf flexpart_v10.4.tar
 cd flexpart_v10.4_3d7eebf/src
