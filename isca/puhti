@@ -1,0 +1,9 @@
+module purge
+module load intel-oneapi-compilers-classic intel-oneapi-mpi intel-oneapi-mkl netcdf-c netcdf-fortran
+export F90=mpif90
+export CC=mpicc
+export PATH="$PATH:/scratch/project_2002239/Isca/isca_env/bin"
+export GFDL_BASE=/scratch/project_2002239/Isca
+export GFDL_ENV=puhti
+export GFDL_WORK=/scratch/project_2002239/gfdl_work
+export GFDL_DATA=/scratch/project_2002239/gfdl_data
