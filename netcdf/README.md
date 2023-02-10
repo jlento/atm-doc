@@ -2,8 +2,8 @@
 
 There are many tools for working with netcdf files, such as `cdo`. However,
 sometimes it may be preferrably to work with the netcdf files more directly with
-the routines from the netcdf library. Netcdf library routines have bindings for
-many languages, C, Fortran, Python, etc.
+the routines from the netcdf library, or specialised Python packages. Netcdf
+library routines have bindings for many languages, C, Fortran, Python, etc.
 
 The key to efficient working with netcdf files is to understand in which order
 the data is in the netcdf file, and then read and write the data in that order.
@@ -52,16 +52,35 @@ file into memory.
 
 In this example we would like to extract variables UMEAN, VMEAN and WMEAN from
 the file `in.nc`, select a thin slice from those variables, and write the result
-to the file `out.nc`. Using cdo to do this is very simple
+to the file `out.nc`.
+
+## Using cdo
 
 ```console
 $ cdo -selname,UMEAN,VMEAN,WMEAN -selindexbox,100,100,0,1000 in.nc out.nc
 ```
 
 Unfortunately, if the input file is large, let's say 13GB, and has many
-variables, the cdo command is very slow (may take hours). We are not doing any
-computations, only extracting data, so we know this operation should not take
-long. This would be a good place to use netcdf library directly.
+variables, the cdo command may be very slow (may take hours). We are not doing
+any computations, only extracting data, so we know this operation should not
+take long. This would be a good place to look for alternative solutions.
+
+## Using Python xarray
+
+Python xarray is probably the best thing to try next. As an added benefit, MetPy
+and PyART use xarray data structures, and Dask integration makes parallelisation
+easy. Also, with OpeNDAP remote datasets, xarray does lazy loading of only the
+data one needs, not the whole dataset. For example,
+
+```python
+ds = xr.open_dataset("https://thredds.met.no/thredds/dodsC/mepslatest/meps_det_2_5km_20230210T09Z.ncml")
+```
+
+The xarray example is in file `nc_select_fields_and_slice_xarray.py`. It's
+runtime for a 13GB test file (not included) is the same order as the more
+explicit stream processing of the next two implementations.
+
+## Python and Fortran with netcdf library calls
 
 Let's first see how the data is arranged in the file. First, we check the
 dimensions of the variables, and the sizes of the dimensions:
