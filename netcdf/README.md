@@ -95,3 +95,9 @@ Both "quick script" implementations, `nc_select_fields_and_slice.py` and
 perform about as fast. With the 13GB test file (not included) the runtimes on
 Lustre are under 20 seconds, and on local disc under 10 seconds.
 
+NOTE for Fortran users: In Fortran the most significant index, the index that
+changes slowest, is the last index in multi-dimensional array. This is opposite
+compared to C, `ncdump -h` command output, or Python, where the first index is
+the most significant, and runs slowest. In practice, you need to reverse the
+order of indices in Fortran, compared to C, and other languages/programs that
+use the C like convention.
