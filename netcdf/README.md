@@ -12,14 +12,14 @@ Netcdf has multiple data formats, but for practical purposes one can assume
 https://docs.unidata.ucar.edu/nug/current/file_structure_and_performance.html .
 
 ```
-+----------
++---------------------------------------------------------------------------+
 | Header block
 | ============
 | - dimensions, attributes, etc
 | - fixed size
 |
 | METADATA
-+-----------
++---------------------------------------------------------------------------+
 | Data block 1
 | ============
 | - variable data for variables with fixed dimensions
@@ -29,7 +29,7 @@ https://docs.unidata.ucar.edu/nug/current/file_structure_and_performance.html .
 | VARIABLE 1 (all data for this variable)
 | VARIABLE 2 (all data for this variable)
 | ...
-+------------------------
++----------------------------------------------------------------------------+
 | Data block 2
 | ============
 | - variable data for variables with one unlimited size dimension
@@ -39,6 +39,7 @@ https://docs.unidata.ucar.edu/nug/current/file_structure_and_performance.html .
 | 1ST RECORD: VARIABLE 1 (Time=1), VARIABLE 2 (Time=1), ...
 | 2ND RECORD: VARIABLE 1 (Time=2), VARIABLE 2 (Time=2), ...
 | ...
+|
 ```
 
 The goal is to scan the data once from the beginning of the file to
