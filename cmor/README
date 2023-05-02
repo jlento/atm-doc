@@ -1,0 +1,13 @@
+# Building https://cmor.llnl.gov/mydoc_cmor3_github/ in a container. If you
+# do not need to build from the source, cmor is also available as a prebuilt
+# conda package, https://cmor.llnl.gov/mydoc_cmor3_conda/ .
+
+# puhti.csc.fi
+# juha.lento@csc.fi, 2023-05-02
+
+module purge
+module load tykky
+
+cd $TMPDIR
+mkdir cmor
+conda-containerize new --mamba --prefix cmor --post-install ~/atm-doc/cmor/install_cmor.sh ~/atm-doc/cmor/env.yml
