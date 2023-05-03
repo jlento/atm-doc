@@ -15,8 +15,8 @@ script*. Batch job script is almost a regular shell script. The user gives it to
 the batch system with `sbatch` command to execute on the compute nodes, instead
 of regularily giving it to `bash` shell and executing on the current machine.
 
-At the beginning fo the script there are lines beginning with `#SBATCH
-<option>`, that provide the information about what kind of resources the user
+At the beginning fo the script there are lines beginning with `#SBATCH <option>`,
+that provide the information about what kind of resources the user
 would like to get for the job, how many cpu cores, how many compute nodes, how
 much memory, for how long time, etc. Batch system finds the suitable resources,
 and starts running the batch job script on the first node when the resources
@@ -52,7 +52,7 @@ https://docs.csc.fi/support/faq/
 - Sending email when a job starts/finishes is not working?
 
 
-## PART 2: What's going on in the batch system?
+## What's going on in the batch system?
 
 ### How to submit a quick test job?
 
@@ -97,9 +97,12 @@ test         up      15:00        1-2   no       NO        all      4        idl
 
 ```console
 [jlento@puhti-login14 ~]$ sacctmgr list association Account=$PROJECT Partition=test
-   Cluster    Account       User  Partition     Share   Priority GrpJobs       GrpTRES GrpSubmit     GrpWall   GrpTRESMins MaxJobs       MaxTRES MaxTRESPerNode MaxSubmit     MaxWall   MaxTRESMins                  QOS   Def QOS GrpTRESRunMin 
----------- ---------- ---------- ---------- --------- ---------- ------- ------------- --------- ----------- ------------- ------- ------------- -------------- --------- ----------- ------------- -------------------- --------- ------------- 
-     puhti project_2+     jlento       test         1                                                                            1                                      2                                         normal
+   Cluster    Account       User  Partition     Share   Priority GrpJobs       GrpTRES GrpSubmit     GrpWall   GrpTRESMins MaxJobs
+   MaxTRES MaxTRESPerNode MaxSubmit     MaxWall   MaxTRESMins                  QOS   Def QOS GrpTRESRunMin
+   ---------- ---------- ---------- ---------- --------- ---------- ------- ------------- --------- -----------
+   ------------- ------- ------------- -------------- --------- ----------- ------------- -------------------- --------- ------------- 
+   puhti project_2+     jlento       test         1                                                                            1
+   2                                         normal
 ```
 
 ## What's going on in the node where my job is running?
@@ -116,7 +119,7 @@ Last login: Tue May  2 16:58:06 2023 from 10.140.14.71
 ### In the computing node you can use htop, ps, etc to see what's going on!
 
   You can check if the cpu cores are actually working 100%, and does the number
-  of processes / threads match tp the number of cpu cores, or at least is
+  of processes / threads match the number of reserved cpu cores, or at least is
   what you expected.
 
 ```console
