@@ -118,11 +118,14 @@ Last login: Tue May  2 16:58:06 2023 from 10.140.14.71
 
 ### In the computing node you can use htop, ps, etc to see what's going on!
 
-  You can check if the cpu cores are actually working 100%, and does the number
-  of processes / threads match the number of reserved cpu cores, or at least is
-  what you expected.
+You can check if the cpu cores are actually working 100%, and does the number of
+processes / threads match the number of reserved cpu cores, or at least is what
+you expected.
 
 ```console
 [jlento@r07c06 ~]$ module load htop
 [jlento@r07c06 ~]$ htop
 ```
+
+In the node you can even attach `gdb` debugger to a running process, and see
+what is going on in the process.
