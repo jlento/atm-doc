@@ -1,0 +1,6 @@
+name: ec-conf
+channels:
+  - conda-forge
+dependencies:
+  - python 2.*
+  - tk

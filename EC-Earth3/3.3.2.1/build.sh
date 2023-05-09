@@ -6,6 +6,7 @@
 # puhti.csc.fi, Intel compiler suite
 # jukka-pekka.keskinen@helsinki.fi, juha.lento@csc.fi
 # 2017-09-03, 2017-09-21, 2019-02-27, 2019-08-30
+# 2020-01-24, 2020-04-15
 
 usage="
 Usage: bash $0
@@ -38,13 +39,14 @@ log files. Something like
 
 ### Local/user defaults ###
 
-: ${TAG:=3.3.1.1}
+export TAG="3.3.2.1"           # TAG can be either a tag or a revision
+#export TAG=7586
 : ${BLDROOT:=$TMPDIR/ece3}
 : ${INSTALLROOT:=/projappl/project_$(id -g)/$USER/ece3}
 : ${RUNROOT:=/scratch/project_$(id -g)/$USER/ece3}
-: ${PLATFORM:=csc-puhti-intel}
+: ${PLATFORM:=csc-puhti-atmdoc}
 : ${GRIBEX_TAR_GZ:=${HOME}/gribex_000370.tar.gz}
-# : ${REVNO:=6611}
+
 
 
 ### Some general bash scripting stuff ###
@@ -89,15 +91,19 @@ expand-variables () {
 
 
 updatesources () {
-    [ "$REVNO" ] && local revflag="-r $REVNO"
     mkdir -p $BLDROOT
     cd $BLDROOT
-    svn checkout https://svn.ec-earth.org/ecearth3/tags/$TAG $TAG
+    if [[ "$TAG" == *"."* ]]; then
+	svn checkout https://svn.ec-earth.org/ecearth3/tags/$TAG $TAG
+    else
+	svn checkout -r $TAG https://svn.ec-earth.org/ecearth3/trunk $TAG
+    fi
     svn checkout https://svn.ec-earth.org/vendor/gribex/gribex_000370 gribex_000370
 }
 
 ecconfig () {
     cd ${BLDROOT}/${TAG}/sources
+    cp ${thisdir}/${PLATFORM}.xml platform/
     ./util/ec-conf/ec-conf --platform=${PLATFORM} ${thisdir}/config-build.xml
 }
 
@@ -142,7 +148,6 @@ EOF
 
 tm5 () {
     cd ${BLDROOT}/${TAG}/sources/tm5mp
-    # patch -u -p0 < $thisdir/tm5.patch
     sed -i 's/\?//g' base/convection.F90
     PATH=${BLDROOT}/${TAG}/sources/util/makedepf90/bin:$PATH ./setup_tm5 -n -j 4 ecconfig-ecearth3.rc
 }
@@ -163,44 +168,42 @@ lpj-guess () {
     make # Fails with int <---> MPI_Comm type errors...
 }
 
-# Install
-install_all () {
-    mkdir -p ${INSTALLROOT}/${TAG}/${REVNO}
-    local exes=(
-	      xios-2.5/bin/xios_server.exe
-	      nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe
-	      ifs-36r4/bin/ifsmaster-ecconf
-	      runoff-mapper/bin/runoff-mapper.exe
-	      amip-forcing/bin/amip-forcing.exe
-	      tm5mp/build/appl-tm5.x
-	      oasis3-mct/util/lucia/lucia.exe
-	      oasis3-mct/util/lucia/lucia
-	      oasis3-mct/util/lucia/balance.gnu)
-	  for exe in "${exes[@]}"; do
-        cp -f ${BLDROOT}/${TAG}/sources/${exe} ${INSTALLROOT}/${TAG}/${REVNO}/
-    done
-    cp -f /appl/climate/bin/cdo ${INSTALLROOT}/${TAG}/${REVNO}/
+grib-tables () {
+    cd ${BLDROOT}/${TAG}/sources/util/grib_table_126 
+    bash define_table_126.sh
 }
 
-# Create run directory and fix stuff
-
-create_ece_run () {
-    cd $RUNROOT
-    mkdir -p ece-${TAG}-r${REVNO}
-    \cp -r ${BLDROOT}/${TAG}/runtime/* ${RUNROOT}/ece-${TAG}-r${REVNO}/
-    \cp ${thisdir}/${PLATFORM}.cfg.tmpl ${RUNROOT}/ece-${TAG}-r${REVNO}/classic/platform/
-    \cp ${thisdir}/${PLATFORM}.xml ${RUNROOT}/ece-${TAG}-r${REVNO}/classic/platform/
-    cd ${RUNROOT}/ece-${TAG}-r${REVNO}
-    \cp classic/ece-esm.sh.tmpl classic/ece-ifs+nemo+tm5.sh.tmpl
-    sed "s|THIS_NEEDS_TO_BE_CHANGED|${INSTALLROOT}/${TAG}/${REVNO}|" ${thisdir}/rundir.patch | patch -u -p0
-    mkdir -p ${RUNROOT}/ece-${TAG}-r${REVNO}/tm5mp
-    cd ${RUNROOT}/ece-${TAG}-r${REVNO}/tm5mp
-    \cp -r ${BLDROOT}/${TAG}/sources/tm5mp/rc .
-    \cp -r ${BLDROOT}/${TAG}/sources/tm5mp/bin .
-    \cp -r ${BLDROOT}/${TAG}/sources/tm5mp/build .
-    ln -s bin/pycasso_setup_tm5 setup_tm5
+collect_executables () {
+    cd ${BLDROOT}
+    mkdir ${TAG}-exe
+    cp ${TAG}/sources/xios-2.5/bin/xios_server.exe ${TAG}-exe/
+    cp ${TAG}/sources/tm5mp/build-cb05-ml34/appl-tm5-cb05.x ${TAG}-exe/
+    cp ${TAG}/sources/ifs-36r4/bin/ifsmaster-ecconf ${TAG}-exe/
+    cp ${TAG}/sources/nemo-3.6/CONFIG/ORCA1L75_LIM3/BLD/bin/nemo.exe ${TAG}-exe/
+    cp ${TAG}/sources/runoff-mapper/bin/runoff-mapper.exe ${TAG}-exe/
+    cp ${TAG}/sources/amip-forcing/bin/amip-forcing.exe ${TAG}-exe/
+    cp -r ${TAG}/sources/util/grib_table_126 ${TAG}-exe/
+    echo "Built binaries can now be found from " ${BLDROOT}/${TAG}-exe
+    echo "Please copy them wherever you like to keep them. One good place is your project's projappl."
 }
 
+prepare_rundir () {
+    cat <<EOF
+ * *  *   *    *     *      *       *        *         *          *         *        *       *      *     *    *   *  * *
+You need to prepare your rundir manually, sorry!
+
+Remember to do at least the following:
+   1) Copy the runtime/classic to where you intend to run.
+   2) Create the subdirectory tm5mp to your run directory and copy sources/tm5mp/bin, sources/tm5mp/rc, and 
+      sources/tm5mp/setup_tm5 there.
+   3) Modify your run script or your runscript template, usually ece-esm.sh(.tmpl), to have the correct binary locations 
+      (the environment variables with exe).
+   4) Change all instances of 'project_2001927' and 'r7211-csc-puhti-config-update'. A good way to proceed is to grep and
+     then manually edit. You should know where these variables should point to.
+   5) Ask for help if things don't work! :)
+ * *  *   *    *     *      *       *        *         *          *         *        *       *      *     *    *   *  * *
+EOF
+}
 
 ### Execute all functions if this script is not sourced ###
 
@@ -219,7 +222,9 @@ if ! ${sourced}; then
     ( runoff-mapper  2>&1 ) > ${BLDROOT}/${TAG}/runoff.log &
     wait
     ( amip-forcing   2>&1 ) > ${BLDROOT}/${TAG}/amipf.log &
+    ( grib-tables    2>&1 ) > ${BLDROOT}/${TAG}/grib_tables.log &
     wait
-    install_all
-    create_ece_run
+    collect_executables
+    wait
+    prepare_rundir
 fi
