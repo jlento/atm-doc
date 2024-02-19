@@ -42,6 +42,13 @@ cd WRF
 
 "
 
+# For 2009 WRF version 3.1.1 needed for PlanetWRF, configure with "13"
+# instead of "34", and after ./configure, edit 'configure.wrf' lines 92-95:
+#    92 SFC             =       gfortran -cpp -fallow-argument-mismatch -fallow-invalid-boz
+#    93 SCC             =       gcc -std=gnu89 -DMPI2_SUPPORT
+#    94 DM_FC           =       mpif90 -cpp -fallow-argument-mismatch -fallow-invalid-boz
+#    95 DM_CC           =       mpicc -std=gnu89 -DMPI2_SUPPORT
+# to make the new compilers play with the old source.
 
 # Build WRF em_b_wave test
 
