@@ -25,7 +25,7 @@ export YACC='/usr/bin/yacc -d'
 ./configure  # Select "35"
 
 cp configure.wrf configure.wrf.orig
-sed '/^DM_CC/s/$/ -DMPI2_SUPPORT/;/^FCBASEOPTS /s/$/ -fallow-argument-mismatch -fallow-invalid-boz/' configure.wrf.orig
+sed -i '/^DM_CC/s/$/ -DMPI2_SUPPORT/;/^FCBASEOPTS /s/$/ -fallow-argument-mismatch -fallow-invalid-boz/' configure.wrf
 
 # [jlento@mahti-login14 WRF-3.9]$ diff configure.wrf.orig configure.wrf
 # 123c123
